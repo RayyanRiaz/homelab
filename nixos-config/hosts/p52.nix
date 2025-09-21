@@ -9,7 +9,7 @@
   ];
 
   networking.hostName = "p52";
-  system.stateVersion = "24.05";
+  system.stateVersion = "25.05";
   nixpkgs.config.allowUnfree = true;
 
   boot.loader.systemd-boot.enable = true;
