@@ -37,9 +37,4 @@
     nvidia_x11
   ];
 
-  # machine-specific packages
-  environment.systemPackages = with pkgs; [
-    vim
-    git
-  ];
 }
