@@ -3,7 +3,7 @@
 {
   users.users.rayyan = {
     isNormalUser = true;
-    extraGroups = [ "wheel" ];
+    extraGroups = [ "wheel", "docker" ];
     password = "changeme";
   };
 }
