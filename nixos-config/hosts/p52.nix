@@ -5,6 +5,7 @@
     ../modules/common.nix
     ../modules/users.nix
     ../modules/ssh.nix
+    ../modules/base_packages.nix
   ];
 
   networking.hostName = "p52";
@@ -30,11 +31,5 @@
     # https://nixos.wiki/wiki/Nvidia#Determining_the_Correct_Driver_Version
     package = config.boot.kernelPackages.nvidiaPackages.stable;
   };
-
-  # Install CUDA toolkit + driver
-  environment.systemPackages = with pkgs; [
-    cudaPackages.cudatoolkit
-    nvidia_x11
-  ];
 
 }
