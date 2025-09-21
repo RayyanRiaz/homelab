@@ -7,7 +7,7 @@
         type = "gpt";
         partitions = {
           boot = {
-            size = "512MiB";
+            size = "512M";
             type = "EF00";
             content = {
               type = "filesystem";
@@ -16,7 +16,7 @@
             };
           };
           root = {
-            size = "200GiB";
+            size = "200G";
             content = {
               type = "filesystem";
               format = "ext4";
