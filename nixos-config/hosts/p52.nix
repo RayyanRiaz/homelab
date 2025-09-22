@@ -3,9 +3,10 @@
 {
   imports = [
     ../modules/common.nix
-    ../modules/users.nix
     ../modules/ssh.nix
     ../modules/base_packages.nix
+
+    ../users/rayyan
   ];
 
   networking.hostName = "p52";
