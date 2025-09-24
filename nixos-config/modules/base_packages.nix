@@ -23,7 +23,6 @@
     jq           # JSON CLI
     fd           # better find
     ripgrep      # better grep
-    btop         # system monitor
 
 
     # Network debug
