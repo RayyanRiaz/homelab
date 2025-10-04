@@ -30,6 +30,20 @@
           ];
         };
 
+        edge-router = lib.nixosSystem {
+          inherit system;
+          modules = [
+            ./hosts/edge-router.nix
+            disko.nixosModules.disko
+            ./disko/edge-router.nix
+            home-manager.nixosModules.home-manager
+            {
+              home-manager.useGlobalPkgs = true;
+              home-manager.useUserPackages = true;
+            }
+          ];
+        };
+
         # future machine example:
         # serverX = lib.nixosSystem {
         #   inherit system;
