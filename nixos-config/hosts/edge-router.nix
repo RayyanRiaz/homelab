@@ -1,26 +1,24 @@
 {
   config,
+  lib,
   pkgs,
   ...
 }:
 
 let
-  wanInterface = "enp1s0";
-  lanInterface = "enp2s0";
+  wanInterface = "enp2s0";
+  lanInterface = "enp3s0";
   homeVlan = {
     name = "home";
-    id = 10;
-    interface = lanInterface;
+    id = "10";
   };
   serverVlan = {
     name = "servers";
-    id = 20;
-    interface = lanInterface;
+    id = "20";
   };
   cameraVlan = {
     name = "cameras";
-    id = 30;
-    interface = lanInterface;
+    id = "30";
   };
 in
 {
@@ -62,7 +60,7 @@ in
   networking = {
     enableIPv6 = true;
 
-    useDHCP = false;
+    useDHCP = lib.mkForce false;
     # https://www.reddit.com/r/archlinux/comments/ge61lr/dhcpcd_vs_netword_preference_and_experience/
     useNetworkd = true; # enable systemd-networkd (recommended for advanced network setups)
     dhcpcd.enable = false; # disable dhcpcd if using systemd-networkd
