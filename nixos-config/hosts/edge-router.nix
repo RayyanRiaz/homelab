@@ -211,10 +211,7 @@ in
 
   systemd.network.wait-online = {
     enable = true;
-    interfaces = [
-      wanInterface
-      lanInterface
-    ];
+    extraArgs = [ "--interface=${wanInterface}" ];
   };
 
   virtualisation.docker.enable = lib.mkForce false;
