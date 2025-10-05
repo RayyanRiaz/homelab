@@ -34,7 +34,7 @@ in
 
   boot.kernelPackages = pkgs.linuxPackages_latest;
   boot.loader.systemd-boot.enable = true;
-  boot.loader.efi.canTouchEfiVariables = true;
+  boot.loader.efi.canTouchEfiVariables = false;  # hp prodesk 400 does not allow writing efi variables
 
   environment.systemPackages = with pkgs; [
     vim
