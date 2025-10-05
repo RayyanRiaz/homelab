@@ -34,7 +34,7 @@ in
 
   boot.kernelPackages = pkgs.linuxPackages_latest;
   boot.loader.systemd-boot.enable = true;
-  boot.loader.efi.canTouchEfiVariables = false;  # hp prodesk 400 does not allow writing efi variables
+  boot.loader.efi.canTouchEfiVariables = false; # hp prodesk 400 does not allow writing efi variables
 
   environment.systemPackages = with pkgs; [
     vim
@@ -167,6 +167,8 @@ in
 
     dnsmasq = {
       enable = true;
+      after = [ "network-online.target" ];
+      wants = [ "network-online.target" ];
       # ask dnsmasq to bind to the VLAN interfaces and hand out ranges
       settings = {
         # domain-needed = true;
