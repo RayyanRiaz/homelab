@@ -1,0 +1,4189 @@
+**** FRITZ!Box 7520 (UI) CONFIGURATION EXPORT
+Password=$$$$XYUSJASNF412GXIPDQCO243UBT1XJ23I2HBLHL5WCETXSUL4I56QVKEXDMJLERRX56KMTXZHI64NGU4DZUBWWJA5ZRNJCKBBUQ34V2IA
+FirmwareVersion=175.08.02
+CONFIG_INSTALL_TYPE=arm_128MB_cortexa9_2geth_usb_host_2wlan11n_dect_vdsl_02249
+OEM=1und1
+Country=049
+Language=de
+**** CFGFILE:ar7.cfg
+/*
+ * /var/tmp.cfg
+ * Thu Jan  1 01:10:12 1970
+ */
+
+meta { encoding = "utf-8"; }
+
+ar7cfg {
+        mode = dsldmode_router;
+        active_provider = "other";
+        active_name = "";
+        igddenabled = yes;
+        wan_bridge_with_dhcpc = yes;
+        wan_bridge_gateway = 0.0.0.0;
+        dhcpc_use_static_dns = no;
+        dhcp_dslforumorg = no;
+        ethmode = ethmode_bridge;
+        tcom_targetarch = no;
+        vdsl_resalearch = no;
+        aontv_arch = no;
+        bng_arch = yes;
+        hsi_use_wan_vlan = yes;
+        hsi_vlancfg {
+                vlanencap = vlanencap_none;
+                tagtype = vlantagtype_customer;
+                vlanid = 0;
+                vlanprio = 0;
+                tos = 0;
+        }
+        mtu_cutback_mode = mtumode_auto;
+        mtu_cutback = 1500;
+        StatisticStartOfMonth = 1;
+        enable_mac_override = yes;
+        macdsl_override = 00:00:00:00:00:00;
+        ipv6mode = ipv6_automatic;
+        ipv4mode = ipv4_normal;
+        serialcfg {
+                mode = serialmode_off;
+                mbim = mbimmode_off;
+                number = "*99#";
+                provider = "internet.t-mobile";
+                username = "$$$$ZWZR446U6YZ2UCDKV613HGP3C1XGL13JK5IBT2O52D13521CZ4XOUQOVU64I1QXWUMR22CYPICCHAAAA";
+                passwd = "$$$$THYXBPVP3YVCFATWDZOLBHZB61JHETU5YCMNIQE4UQ2SCYFUV1NCAOYFB2R1ROCDNSIC54MWXYQX3AAA";
+                connect_chatscript = "ABORT BUSY ABORT 'NO CARRIER'",
+                                     "ABORT VOICE ABORT 'NO DAILTONE'",
+                                     "ABORT 'NO ANSWER' ABORT DELAYED",
+                                     "ABORT ERROR", "TIMEOUT 20",
+                                     "'' 'AT+cgdcont=1,\\"IP\\",\\"${provider}\\"'",
+                                     "OK 'ATDT${number}'", "CONNECT",
+                                     "WAIT 2";
+                stay_always_online = no;
+                inactivity_timeout = 1m;
+                backup {
+                        enabled = no;
+                        quickstart = serialquickstart_off;
+                        downtime = 3m;
+                        reverttime = 30m;
+                }
+        }
+        ethinterfaces {
+                name = "eth0";
+                dhcp = no;
+                ipaddr = 192.168.178.1;
+                netmask = 255.255.255.0;
+                dstipaddr = 0.0.0.0;
+                dhcpenabled = yes;
+                dhcpstart = 0.0.0.0;
+                dhcpend = 0.0.0.0;
+                is_guest = no;
+                is_hotspot = no;
+                multicast_snooping = yes;
+                is_public = no;
+        } {
+                name = "eth0:0";
+                dhcp = no;
+                ipaddr = 169.254.1.1;
+                netmask = 255.255.0.0;
+                dstipaddr = 0.0.0.0;
+                dhcpenabled = yes;
+                dhcpstart = 0.0.0.0;
+                dhcpend = 0.0.0.0;
+                is_guest = no;
+                is_hotspot = no;
+                multicast_snooping = yes;
+                is_public = no;
+        } {
+                name = "wlan";
+                dhcp = no;
+                ipaddr = 192.168.182.1;
+                netmask = 255.255.255.0;
+                dstipaddr = 0.0.0.0;
+                interfaces = "ath0", "ath1", "wdsup?";
+                dhcpenabled = yes;
+                dhcpstart = 0.0.0.0;
+                dhcpend = 0.0.0.0;
+                is_guest = no;
+                is_hotspot = no;
+                multicast_snooping = yes;
+                is_public = no;
+        }
+        brinterfaces {
+                name = "lan";
+                dhcp = no;
+                ipaddr = 192.168.178.1;
+                netmask = 255.255.255.0;
+                dstipaddr = 0.0.0.0;
+                interfaces = "eth0", "eth1", "eth2", "eth3", "ath?*",
+                             "wdsup?*", "ath0", "wdsup1", "wdsdw4", "wdsdw1",
+                             "wdsdw2", "wdsdw3";
+                dhcpenabled = yes;
+                dhcpstart = 0.0.0.0;
+                dhcpend = 0.0.0.0;
+                is_guest = no;
+                is_hotspot = no;
+                multicast_snooping = yes;
+                is_public = no;
+        } {
+                name = "lan:0";
+                dhcp = no;
+                ipaddr = 169.254.1.1;
+                netmask = 255.255.0.0;
+                dstipaddr = 0.0.0.0;
+                dhcpenabled = yes;
+                dhcpstart = 0.0.0.0;
+                dhcpend = 0.0.0.0;
+                is_guest = no;
+                is_hotspot = no;
+                multicast_snooping = yes;
+                is_public = no;
+        } {
+                name = "guest";
+                dhcp = no;
+                ipaddr = 192.168.189.1;
+                netmask = 255.255.255.0;
+                dstipaddr = 0.0.0.0;
+                interfaces = "guest?*", "guest_ct*", "guest_st*";
+                dhcpenabled = yes;
+                dhcpstart = 0.0.0.0;
+                dhcpend = 0.0.0.0;
+                is_guest = yes;
+                is_hotspot = no;
+                multicast_snooping = yes;
+                is_public = no;
+        }
+        dslinterface {
+                name = "dsl";
+                dhcp = no;
+                ipaddr = 0.0.0.0;
+                netmask = 255.255.255.255;
+                dstipaddr = 0.0.0.0;
+                dhcpenabled = yes;
+                dhcpstart = 0.0.0.0;
+                dhcpend = 0.0.0.0;
+                is_guest = no;
+                is_hotspot = no;
+                multicast_snooping = yes;
+                is_public = no;
+        }
+        dslinterface_metric = 2;
+        ipbridge {
+                enabled = no;
+        }
+        pppoefw {
+                interfaces = "lan", "eth0", "eth1", "eth2", "eth3", "wlan";
+                nofirewall = yes;
+                dnsfilter_for_active_directory = no;
+                hostuniq_filter = "";
+                dpconfig {
+                        security = dpsec_host;
+                        filter_teredo = yes;
+                        filter_netbios = yes;
+                        filter_sip = no;
+                        filter_smtp = no;
+                        filter_upnp = yes;
+                        sip_alg = no;
+                        lowinput {
+                                policy = "reject";
+                                accesslist =
+                                             "permit ip any any connection outgoing-related",
+                                             "permit ip any any connection incoming-related",
+                                             "permit icmp any any";
+                        }
+                        lowoutput {
+                                policy = "permit";
+                        }
+                        highinput {
+                                policy = "permit";
+                        }
+                        highoutput {
+                                policy = "permit";
+                                accesslist =
+                                             "reject ip any 242.0.0.0 255.0.0.0",
+                                             "deny ip any host 255.255.255.255",
+                                             "reject ip any 169.254.0.0 255.255.0.0";
+                        }
+                }
+                inherit_vlan_from_internet = yes;
+        }
+        budget {
+                Enabled = no;
+                Period = 2;
+                VolumeLow = 0;
+                VolumeHigh = 0;
+                ConnectionTime = 0;
+                WarnOnly = yes;
+        }
+        sync_groups {
+                name = "sync_dsl";
+                enabled = no;
+                media_type = media_type_dsl;
+                connect_delay_when_synced = 3s;
+                pppoeiface = "ptm0";
+                speed_in_netto = 1024;
+                speed_out_netto = 512;
+                manual_speed = no;
+                autoconfig = yes;
+        } {
+                name = "sync_ata";
+                enabled = yes;
+                media_type = media_type_ata;
+                connect_delay_when_synced = 3s;
+                pppoeiface = "eth0";
+                speed_in_netto = 1024;
+                speed_out_netto = 512;
+                manual_speed = no;
+                autoconfig = yes;
+        } {
+                name = "sync_wlan_ata";
+                enabled = no;
+                media_type = media_type_wlan_ata;
+                connect_delay_when_synced = 3s;
+                speed_in_netto = 1024;
+                speed_out_netto = 512;
+                manual_speed = no;
+                autoconfig = yes;
+        } {
+                name = "sync_serial";
+                enabled = no;
+                media_type = media_type_serial;
+                connect_delay_when_synced = 3s;
+                speed_in_netto = 1024;
+                speed_out_netto = 512;
+                manual_speed = no;
+                autoconfig = yes;
+        } {
+                name = "sync_lte";
+                enabled = no;
+                media_type = media_type_lte;
+                connect_delay_when_synced = 3s;
+                speed_in_netto = 1024;
+                speed_out_netto = 512;
+                manual_speed = no;
+                autoconfig = yes;
+        } {
+                name = "sync_ipclient";
+                enabled = no;
+                media_type = media_type_ipclient;
+                connect_delay_when_synced = 3s;
+                pppoeiface = "lan";
+                speed_in_netto = 1024;
+                speed_out_netto = 512;
+                manual_speed = no;
+                autoconfig = yes;
+        }
+        vccs {
+                VPI = 1;
+                VCI = 32;
+                traffic_class = atm_traffic_class_UBR;
+                pcr = 0;
+                scr = 0;
+                priority = 0;
+                dsl_encap = dslencap_ether;
+                ipbridgeing = no;
+                ipbridgeing_igmp = no;
+                pppoeforwarding = no;
+                connections = "internet", "voip";
+        }
+        mcupstream = "internet";
+        voip_forwardrules = "udp 0.0.0.0:5060 0.0.0.0:5060",
+                            "tcp 0.0.0.0:5060 0.0.0.0:5060",
+                            "udp 0.0.0.0:7078+20 0.0.0.0:7078";
+        voip_ip6_forwardrules = "udp 5060 # SIP", "tcp 5060 # SIP",
+                                "udp 7078-7097 # RTP";
+        tr069_forwardrules = "tcp 0.0.0.0:8089 0.0.0.0:8089";
+        tr069_ip6_forwardrules = "tcp 8089";
+        dslifaces {
+                enabled = yes;
+                name = "internet";
+                weight = 50;
+                dsl_encap = dslencap_inherit;
+                dslinterfacename = "dsl";
+                no_masquerading = no;
+                use_fixed_masqaddr_if_no_masquerading = no;
+                no_firewall = no;
+                stackmode = stackmode_ipv4only;
+                pppoevlanauto = no;
+                pppoevlanauto_startwithvlan = no;
+                ppptarget = "internet";
+                rfc4638_enabled = no;
+                fixed_masqaddr = 0.0.0.0;
+                mtu = 0;
+                gre_server_cfg {
+                        server_dnsprefer = protoprefer_ipv4;
+                        dpd {
+                                inactivity = 20s;
+                                replywait = 1s;
+                                npings = 4;
+                                period = 30s;
+                        }
+                        allow_netbios = no;
+                }
+                etherencapcfg {
+                        use_dhcp = yes;
+                        use_dhcp_if_not_encap_ether = no;
+                        ipaddr = 0.0.0.0;
+                        netmask = 0.0.0.0;
+                        gateway = 0.0.0.0;
+                        dns1 = 0.0.0.0;
+                        dns2 = 0.0.0.0;
+                }
+                is_mcupstream = yes;
+                stay_always_online = no;
+                disable_ondemand = no;
+                reconnect_delay_after_conn_abort = 30s;
+                reconnect_delay_after_disconnect = 0w;
+                only_route_when_connected = no;
+                redial_delay_after_auth_failure = 1m;
+                redial_limit = 20;
+                redial_after_limit_reached = 10m;
+                redial_after_limit_reached_variance = 5m;
+                redial_after_limit_randomize = no;
+                redial_delay_after_low_error = 10s;
+                redial_delay_after_ppp_timeout = 10s;
+                redial_delay_after_ppp_error = 1m;
+                routes_only_for_local = no;
+                dproutes_only_for_local = no;
+                hide_interface_address = no;
+                disable_staticroutes_on_dhcproutes = no;
+                ripv2receiver_enabled = no;
+                ripv2_update_timer = 30s;
+                ripv2authmode = ripv2_auth_none;
+                ripv2md5_keyid = 0;
+                ripv2passwd = "";
+                set_replicate_dhcpoptions_in_parameter_request_list = no;
+                unset_ignored_dhcpoptions_in_parameter_request_list = yes;
+                dsldpconfig {
+                        security = dpsec_firewall;
+                        filter_teredo = yes;
+                        filter_netbios = yes;
+                        filter_sip = no;
+                        filter_smtp = no;
+                        filter_upnp = yes;
+                        sip_alg = no;
+                        lowinput {
+                                policy = "permit";
+                                accesslist =
+                                             "deny ip any 242.0.0.0 255.0.0.0",
+                                             "deny ip any host 255.255.255.255";
+                        }
+                        lowoutput {
+                                policy = "permit";
+                        }
+                        highinput {
+                                policy = "permit";
+                        }
+                        highoutput {
+                                policy = "permit";
+                                accesslist =
+                                             "reject ip any 242.0.0.0 255.0.0.0",
+                                             "deny ip any host 255.255.255.255",
+                                             "reject ip any 169.254.0.0 255.255.0.0";
+                        }
+                }
+                dhcp_auth_mode = auth_none;
+                dhcp_requests_with_client_id = yes;
+                dhcp_ignore_options_in_renewing = no;
+                is_erouter = no;
+                fakepacm = no;
+                dhcp_tr069_add_device_vendor_options = no;
+                use_random_macaddr = no;
+                arp_reply_for_any_net_enabled = yes;
+                use_random_ifaceid = no;
+                onlinecheck {
+                        offlinemode = onlinecheck_offlinemode_never;
+                        checkmode = onlinecheck_checkmode_dpd;
+                        check_delay = 5s;
+                        check_interval = 1m;
+                        disconnect_when_offline = no;
+                        timeoutbase = 5s;
+                        nretry = 4;
+                        fallback_lifetime = 1h;
+                }
+                s46_port_restriction_cfg_debug {
+                        offset_bits = 0;
+                        psid_bits = 0;
+                        psid = 0;
+                }
+        } {
+                enabled = yes;
+                name = "voip";
+                weight = 50;
+                dsl_encap = dslencap_inherit;
+                dslinterfacename = "dsl";
+                no_masquerading = no;
+                use_fixed_masqaddr_if_no_masquerading = no;
+                no_firewall = no;
+                stackmode = stackmode_ipv4only;
+                pppoevlanauto = no;
+                pppoevlanauto_startwithvlan = no;
+                ppptarget = "voip";
+                rfc4638_enabled = no;
+                fixed_masqaddr = 0.0.0.0;
+                mtu = 0;
+                gre_server_cfg {
+                        server_dnsprefer = protoprefer_ipv4;
+                        dpd {
+                                inactivity = 20s;
+                                replywait = 1s;
+                                npings = 4;
+                                period = 30s;
+                        }
+                        allow_netbios = no;
+                }
+                etherencapcfg {
+                        use_dhcp = yes;
+                        use_dhcp_if_not_encap_ether = no;
+                        ipaddr = 0.0.0.0;
+                        netmask = 0.0.0.0;
+                        gateway = 0.0.0.0;
+                        dns1 = 0.0.0.0;
+                        dns2 = 0.0.0.0;
+                }
+                is_mcupstream = no;
+                stay_always_online = yes;
+                disable_ondemand = no;
+                reconnect_delay_after_conn_abort = 30s;
+                reconnect_delay_after_disconnect = 0w;
+                only_route_when_connected = no;
+                redial_delay_after_auth_failure = 1m;
+                redial_limit = 20;
+                redial_after_limit_reached = 10m;
+                redial_after_limit_reached_variance = 5m;
+                redial_after_limit_randomize = no;
+                redial_delay_after_low_error = 10s;
+                redial_delay_after_ppp_timeout = 10s;
+                redial_delay_after_ppp_error = 1m;
+                routes_only_for_local = no;
+                dproutes_only_for_local = no;
+                hide_interface_address = no;
+                disable_staticroutes_on_dhcproutes = no;
+                ripv2receiver_enabled = no;
+                ripv2_update_timer = 30s;
+                ripv2authmode = ripv2_auth_none;
+                ripv2md5_keyid = 0;
+                ripv2passwd = "";
+                set_replicate_dhcpoptions_in_parameter_request_list = no;
+                unset_ignored_dhcpoptions_in_parameter_request_list = yes;
+                dsldpconfig {
+                        security = dpsec_firewall;
+                        filter_teredo = yes;
+                        filter_netbios = yes;
+                        filter_sip = no;
+                        filter_smtp = no;
+                        filter_upnp = yes;
+                        sip_alg = no;
+                        lowinput {
+                                policy = "permit";
+                        }
+                        lowoutput {
+                                policy = "permit";
+                        }
+                        highinput {
+                                policy = "permit";
+                        }
+                        highoutput {
+                                policy = "permit";
+                        }
+                }
+                dhcp_auth_mode = auth_none;
+                dhcp_requests_with_client_id = yes;
+                dhcp_ignore_options_in_renewing = no;
+                is_erouter = no;
+                fakepacm = no;
+                dhcp_tr069_add_device_vendor_options = no;
+                use_random_macaddr = no;
+                arp_reply_for_any_net_enabled = yes;
+                use_random_ifaceid = no;
+                onlinecheck {
+                        offlinemode = onlinecheck_offlinemode_never;
+                        checkmode = onlinecheck_checkmode_dpd;
+                        check_delay = 5s;
+                        check_interval = 1m;
+                        disconnect_when_offline = no;
+                        timeoutbase = 5s;
+                        nretry = 4;
+                        fallback_lifetime = 1h;
+                }
+                s46_port_restriction_cfg_debug {
+                        offset_bits = 0;
+                        psid_bits = 0;
+                        psid = 0;
+                }
+        }
+        targets {
+                type = pppcfg_target_internet;
+                name = "internet";
+                only_crypt_auth = no;
+                disconnect_after_auth = no;
+                local {
+                        username = "";
+                        passwd = "";
+                }
+                remoteauth = pppcfg_authtype_chap;
+                remoteauth_only_on_incoming = yes;
+                remote {
+                }
+                inactivity_timeout = 5m;
+                bUseChargeInterval = no;
+                nChargeInterval = 1m;
+                lcpecho_disconnect_mode = lcpecho_auto;
+                logicaldisconnect_with_physical = yes;
+                disconnect_timeout = 0w;
+                finaldisconnectcall = no;
+                ipnetbiosspoofing = no;
+                dnsfilter_for_active_directory = no;
+                no_outgoing_calls = no;
+                coso = pppcfg_coso_caller;
+                callback_delay = 1s;
+                icbmode = pppcfg_icbmode_none;
+                ocbmode = pppcfg_ocbmode_none;
+                mscbprefered = no;
+                multilink {
+                        extra_static_channels = 0;
+                        max_channels = 1;
+                        automatic = no;
+                        automatic_param {
+                                window = 20s;
+                                add_percent = 85;
+                                drop_percent = 70;
+                                sportlich = no;
+                        }
+                }
+                header_compression = yes;
+                data_compression = pppcfg_datacomp_auto;
+                stac_reset_with_history_number = no;
+                encryption = pppcfg_crypt_none;
+                inactivity_prevention_interval = 0w;
+                new_ipaddr_on_connect = no;
+                my_ipaddr = 0.0.0.0;
+                his_ipaddr = 0.0.0.0;
+                overwrite_dns1 = 0.0.0.0;
+                overwrite_dns2 = 0.0.0.0;
+                bVolumeRoundUp = no;
+                VolumeRoundUpBytes = 0;
+                bProviderDisconnectPrevention = yes;
+                ProviderDisconnectPreventionInterval = 1d;
+                ProviderDisconnectPreventionHour = 5;
+                bProviderDisconnectPreventionHourSet = yes;
+                passiv_on_outgoing = no;
+                mode6 = mode6_off;
+                mode4 = mode4_normal;
+        } {
+                type = pppcfg_target_internet;
+                name = "voip";
+                only_crypt_auth = no;
+                disconnect_after_auth = no;
+                local {
+                        username = "";
+                        passwd = "";
+                }
+                remoteauth = pppcfg_authtype_chap;
+                remoteauth_only_on_incoming = yes;
+                remote {
+                }
+                inactivity_timeout = 0w;
+                bUseChargeInterval = no;
+                nChargeInterval = 1m;
+                lcpecho_disconnect_mode = lcpecho_auto;
+                logicaldisconnect_with_physical = yes;
+                disconnect_timeout = 0w;
+                finaldisconnectcall = no;
+                ipnetbiosspoofing = no;
+                dnsfilter_for_active_directory = no;
+                no_outgoing_calls = no;
+                coso = pppcfg_coso_caller;
+                callback_delay = 1s;
+                icbmode = pppcfg_icbmode_none;
+                ocbmode = pppcfg_ocbmode_none;
+                mscbprefered = no;
+                multilink {
+                        extra_static_channels = 0;
+                        max_channels = 1;
+                        automatic = no;
+                        automatic_param {
+                                window = 20s;
+                                add_percent = 85;
+                                drop_percent = 70;
+                                sportlich = no;
+                        }
+                }
+                header_compression = yes;
+                data_compression = pppcfg_datacomp_auto;
+                stac_reset_with_history_number = no;
+                encryption = pppcfg_crypt_none;
+                inactivity_prevention_interval = 0w;
+                new_ipaddr_on_connect = no;
+                my_ipaddr = 0.0.0.0;
+                his_ipaddr = 0.0.0.0;
+                overwrite_dns1 = 0.0.0.0;
+                overwrite_dns2 = 0.0.0.0;
+                bVolumeRoundUp = no;
+                VolumeRoundUpBytes = 0;
+                bProviderDisconnectPrevention = yes;
+                ProviderDisconnectPreventionInterval = 1d;
+                ProviderDisconnectPreventionHour = 5;
+                bProviderDisconnectPreventionHourSet = yes;
+                passiv_on_outgoing = no;
+                mode6 = mode6_off;
+                mode4 = mode4_normal;
+        }
+        dslglobalconfig {
+                autodetect = yes;
+                autodetectparams {
+                        nround = 2;
+                        timeout = 3s;
+                        npacket = 1;
+                        autodetect_overwrite_vlancfg {
+                                vlanencap = vlanencap_none;
+                                tagtype = vlantagtype_customer;
+                                vlanid = 0;
+                                vlanprio = 0;
+                                tos = 0;
+                        }
+                }
+                pppoeiface = "eth0";
+                speed_in_netto = 1000000;
+                speed_out_netto = 1000000;
+                manual_speed = yes;
+                tr069_speed = no;
+                connect_delay_when_synced = 3s;
+                sync_lost_delay = 0w;
+                default_tcom_vlan = 7;
+                use_ppp_provided_speed = yes;
+                pppoe_send_last_sids = no;
+                templates {
+                        VPI = 1;
+                        VCI = 32;
+                        retries = 7;
+                        encap = dslencap_pppoe;
+                } {
+                        VPI = 8;
+                        VCI = 35;
+                        retries = 0;
+                        encap = dslencap_ether;
+                } {
+                        VPI = 8;
+                        VCI = 35;
+                        retries = 0;
+                        encap = dslencap_pppoe;
+                } {
+                        VPI = 8;
+                        VCI = 48;
+                        retries = 0;
+                        encap = dslencap_pppoa;
+                } {
+                        VPI = 8;
+                        VCI = 48;
+                        retries = 0;
+                        encap = dslencap_pppoe;
+                } {
+                        VPI = 8;
+                        VCI = 48;
+                        retries = 0;
+                        encap = dslencap_pppoa_llc;
+                } {
+                        VPI = 8;
+                        VCI = 67;
+                        retries = 0;
+                        encap = dslencap_pppoa;
+                } {
+                        VPI = 8;
+                        VCI = 67;
+                        retries = 0;
+                        encap = dslencap_pppoa_llc;
+                } {
+                        VPI = 8;
+                        VCI = 64;
+                        retries = 0;
+                        encap = dslencap_pppoa;
+                } {
+                        VPI = 8;
+                        VCI = 36;
+                        retries = 0;
+                        encap = dslencap_pppoe;
+                } {
+                        VPI = 0;
+                        VCI = 35;
+                        retries = 0;
+                        encap = dslencap_pppoa;
+                } {
+                        VPI = 0;
+                        VCI = 35;
+                        retries = 0;
+                        encap = dslencap_pppoa_llc;
+                } {
+                        VPI = 0;
+                        VCI = 35;
+                        retries = 0;
+                        encap = dslencap_pppoe;
+                } {
+                        VPI = 9;
+                        VCI = 35;
+                        retries = 0;
+                        encap = dslencap_pppoe;
+                } {
+                        VPI = 1;
+                        VCI = 32;
+                        retries = 0;
+                        encap = dslencap_pppoa;
+                } {
+                        VPI = 1;
+                        VCI = 32;
+                        retries = 0;
+                        encap = dslencap_pppoa_llc;
+                } {
+                        VPI = 0;
+                        VCI = 32;
+                        retries = 0;
+                        encap = dslencap_pppoe;
+                } {
+                        VPI = 0;
+                        VCI = 32;
+                        retries = 0;
+                        encap = dslencap_pppoa;
+                } {
+                        VPI = 0;
+                        VCI = 32;
+                        retries = 0;
+                        encap = dslencap_pppoa_llc;
+                } {
+                        VPI = 0;
+                        VCI = 34;
+                        retries = 0;
+                        encap = dslencap_pppoe;
+                } {
+                        VPI = 0;
+                        VCI = 34;
+                        retries = 0;
+                        encap = dslencap_pppoa;
+                } {
+                        VPI = 0;
+                        VCI = 34;
+                        retries = 0;
+                        encap = dslencap_pppoa_llc;
+                } {
+                        VPI = 0;
+                        VCI = 33;
+                        retries = 0;
+                        encap = dslencap_pppoe;
+                } {
+                        VPI = 8;
+                        VCI = 32;
+                        retries = 0;
+                        encap = dslencap_pppoe;
+                } {
+                        VPI = 8;
+                        VCI = 32;
+                        retries = 0;
+                        encap = dslencap_pppoa;
+                } {
+                        VPI = 8;
+                        VCI = 32;
+                        retries = 0;
+                        encap = dslencap_pppoa_llc;
+                } {
+                        VPI = 0;
+                        VCI = 38;
+                        retries = 0;
+                        encap = dslencap_pppoa;
+                } {
+                        VPI = 0;
+                        VCI = 38;
+                        retries = 0;
+                        encap = dslencap_pppoa_llc;
+                } {
+                        VPI = 8;
+                        VCI = 35;
+                        retries = 0;
+                        encap = dslencap_pppoa;
+                } {
+                        VPI = 8;
+                        VCI = 35;
+                        retries = 0;
+                        encap = dslencap_pppoa_llc;
+                } {
+                        VPI = 0;
+                        VCI = 81;
+                        retries = 0;
+                        encap = dslencap_pppoe;
+                } {
+                        VPI = 0;
+                        VCI = 81;
+                        retries = 0;
+                        encap = dslencap_pppoa;
+                } {
+                        VPI = 0;
+                        VCI = 81;
+                        retries = 0;
+                        encap = dslencap_pppoa_llc;
+                } {
+                        VPI = 8;
+                        VCI = 81;
+                        retries = 0;
+                        encap = dslencap_pppoe;
+                } {
+                        VPI = 8;
+                        VCI = 81;
+                        retries = 0;
+                        encap = dslencap_pppoa;
+                } {
+                        VPI = 8;
+                        VCI = 81;
+                        retries = 0;
+                        encap = dslencap_pppoa_llc;
+                } {
+                        VPI = 0;
+                        VCI = 100;
+                        retries = 0;
+                        encap = dslencap_pppoe;
+                } {
+                        VPI = 0;
+                        VCI = 100;
+                        retries = 0;
+                        encap = dslencap_pppoa;
+                } {
+                        VPI = 0;
+                        VCI = 100;
+                        retries = 0;
+                        encap = dslencap_pppoa_llc;
+                } {
+                        VPI = 1;
+                        VCI = 50;
+                        retries = 0;
+                        encap = dslencap_pppoa;
+                } {
+                        VPI = 1;
+                        VCI = 50;
+                        retries = 0;
+                        encap = dslencap_pppoe;
+                } {
+                        VPI = 0;
+                        VCI = 100;
+                        retries = 0;
+                        encap = dslencap_ether;
+                } {
+                        VPI = 0;
+                        VCI = 33;
+                        retries = 0;
+                        encap = dslencap_ether;
+                } {
+                        VPI = 0;
+                        VCI = 32;
+                        retries = 0;
+                        encap = dslencap_ether;
+                } {
+                        VPI = 14;
+                        VCI = 24;
+                        retries = 0;
+                        encap = dslencap_ether;
+                }
+                MaxDownstreamRate = 0;
+                MaxUpstreamRate = 0;
+                RFI = 0;
+                DownstreamBlackoutBandStart = 0;
+                DownstreamBlackoutBandEnd = 0;
+                ControlBitfield = 0;
+                DownstreamMarginOffset = 0;
+                DownstreamPcbOffset = 0;
+                UpstreamPcbOffset = 0;
+                UsNoiseBits = 0;
+                RFI_mode = 0;
+                DsINP = 0;
+                DiagnosticEnabled = no;
+                Annex = "B";
+                DSLMode = 0;
+                IsDSLModeSet = no;
+                VinaxConfigBitField = 3;
+                DisablePTMCRCCheck = no;
+                sPLZ = "";
+                sMailAddr = "";
+                sDPVersion = "";
+                bAutomaticFeedbackMail = no;
+                nDays = 7;
+                nG997_1_XTSE_1_2_3_4 = 0;
+                nG997_1_XTSE_5_6_7_8 = 0;
+                nG997_1_VDSL2_PROFILES_1_2_3_4 = 0;
+                DisableUs1WhenDs1LatnIsAboveDb = 0;
+                DisableUs2WhenDs1LatnIsAboveDb = 0;
+                pwsGPONPLOAMPassword = "";
+                pwsGPONSerial = "";
+                pwsGPONRegId = "";
+        }
+        saved_non_ata_ip_config {
+                ipaddr = 192.168.178.1;
+                netmask = 255.255.255.0;
+                dns1 = 192.168.180.1;
+                dns2 = 192.168.180.2;
+                overwrite_dns1 = 0.0.0.0;
+                overwrite_dns2 = 0.0.0.0;
+        }
+        accesslist_version = 4;
+        ar7cfg_version = 28;
+        ifaceconfig_version = 18;
+        cfg_tainted = 4;
+        forwardrules_version = 5;
+        tr069discover_active = yes;
+        tr069discover_mode = only_dhcp;
+        tr069discover_unrestrictly = no;
+        tr069discover_without_dhcpoption = no;
+        tr069discover_vlan_takeover = no;
+        tr069discover_vlancfg {
+                vlanencap = vlanencap_none;
+                tagtype = vlantagtype_customer;
+                vlanid = 0;
+                vlanprio = 0;
+                tos = 0;
+        }
+        use_fixed_wlan_guest_ip = no;
+        upnp_cors_allow_origins = "http*://scope.avm.de";
+        upnp_cors_allow_headers = "SOAPACTION", "Content-Type", "Origin";
+        upnp_cors_allow_methods = "GET", "POST", "OPTIONS";
+        upnp_cors_max_age = 1d;
+        allow_background_comm_with_manufacturer = yes;
+        allow_cross_domain_comm = yes;
+        allow_security_report_with_manufacturer = yes;
+        config_externally_changed = no;
+        limit_tcp_ds_rate = yes;
+        tack_enabled = no;
+        tack_count = 4;
+        tack_period = 1;
+        iproute_use_first_matching_route = first_matching_auto;
+        guests_untrusted = no;
+        captive_portal_redirect_enabled = no;
+        captive_portal_show_law_text = no;
+        max_ssdp_items = -1;
+        provider_defaults_merged = no;
+        pdn1_mtu = 0;
+        pdn2_mtu = 0;
+        internet_configured = yes;
+        use_blocked_wan_ip_list_from_avm = yes;
+        wan_configured_version = 1;
+        wan_configured = yes;
+        wan_configured_by = "internet_connected";
+}
+
+
+servercfg {
+        version = 1;
+        hostname = "(none)";
+        dhcpc_hostname = "fritz.box";
+        dns1 = 192.168.180.1;
+        dns2 = 192.168.180.2;
+        public_dns_servers_use_as_fallback = yes;
+        public_dns_servers_v4 = 8.8.8.8, 8.8.4.4, 1.1.1.1, 1.0.0.1, 9.9.9.9,
+                                149.112.112.112;
+        public_dns_servers_v6 = 2001:4860:4860::8888, 2001:4860:4860::8844,
+                                2606:4700:4700::1111, 2606:4700:4700::1001,
+                                2620:fe::fe, 2620:fe::9;
+        use_user_dns_for_ipv4 = no;
+        user_dns1_for_ipv4 = 0.0.0.0;
+        user_dns2_for_ipv4 = 0.0.0.0;
+        use_user_dns_for_ipv6 = no;
+        user_dns1_for_ipv6 = ::;
+        user_dns2_for_ipv6 = ::;
+        wpad_protection = yes;
+        dns_over_tls_enabled = no;
+        dns_over_tls_strict = yes;
+        dns_over_tls_udp_fallback = yes;
+        dns_edns0_client_id_permission = dns_edns0_permission_default;
+        dns_edns0_client_id_mac_and_hostname = no;
+}
+
+
+websrv {
+        port = "80";
+        wanaccess = 0;
+        read_timeout = 15m;
+        request_timeout = 30s;
+        keepalive_timeout = 5m;
+        nokeepalive = "*";
+        errordir = "/usr/www/html/errors";
+        webdir = "/usr/www";
+        cgidir = "cgi-bin";
+        indexfn = "index.var", "index.htm", "index.html";
+        users_only_for_https = no;
+        cors_allow_origins = "http*://scope.avm.de";
+        cors_allow_headers = "SOAPACTION", "Content-Type", "Origin";
+        cors_allow_methods = "GET", "POST", "OPTIONS";
+        cors_max_age = 1d;
+}
+
+
+ipv6 {
+        version = 1;
+        ulamode = ulamode_persist;
+        use_default_ula = yes;
+        ula = fd00::;
+        generated_ula_prefix = fd34:e435:be46::;
+        use_fixed_mtu = no;
+        fixed_mtu = 1280;
+        dhcpv6lanmode = dhcpv6lanmode_stateless;
+        dpcpv6_default_pdlen = 62;
+        dhcpv6_preference = 0;
+        dhcpv6c_use_wanted_prefixlen = no;
+        dhcpv6c_wanted_prefixlen = 62;
+        dhcpv6c_use_rapid_commit = yes;
+        radv {
+                Enabled = yes;
+                MinRtrAdvInterval = 450;
+                MaxRtrAdvInterval = 600;
+                AdvDefaultLifetime = 1800;
+                DefaultRtrPreference = 0;
+                PreferedLifeTime = 3600;
+                ValidLifeTime = 7200;
+                AdvDNS = yes;
+                OtherPrefixesAllowed = no;
+                AdvRouteInfo = yes;
+                UseFixedLanMTU = no;
+                FixedLanMTU = 1500;
+        }
+        ip6_6to4static_cfg {
+                popaddr = 0.0.0.0;
+                local = ::;
+                remote = ::;
+                prefix = ::;
+                prefixlen = 0;
+        }
+        ip6_6rd_cfg {
+                popaddr = 192.88.99.1;
+                prefix = 2002::;
+                prefixlen = 16;
+                ipv4masklen = 0;
+        }
+        ip6_static_cfg {
+                prefix = ::;
+                prefixlen = 56;
+                wan_use_firstprefix = yes;
+                wan_prefix = ::;
+                wan_ifid_automatic = yes;
+                wan_ifid = ::;
+                wan_dns1 = ::;
+                wan_dns2 = ::;
+        }
+        aftr = ::;
+        manual_aftrfqdn = "";
+        use_gw_as_pcpserver = no;
+        lan_dns6_server = ::;
+}
+
+
+hybridcfg {
+        version = 2;
+        enabled = no;
+        primary_sync_group = "sync_ata";
+        secondary_sync_group = "sync_lte";
+        fallback_mode = no_fallback;
+        autoprio {
+                waittime = 1m;
+                highkbytes = 0;
+                highpercent = 80;
+                high0 = 50;
+                high1 = 50;
+                low0 = 100;
+                low1 = 0;
+        }
+        autoprio_enabled = no;
+        fallback_session_flush_enabled = yes;
+        fallback_session_flush_timeout = 5m;
+        backup_downtime = 0w;
+        backup_reverttime = 0w;
+}
+
+
+lispcfg {
+        enabled = no;
+        passwd = "";
+        use_rfc6834 = no;
+        proxy_map_reply = no;
+        always_use_petr = no;
+        per_packet = no;
+        vpn_over_lisp = yes;
+        autoprio {
+                enabled = no;
+                upstream {
+                        waittime = 1m;
+                        highkbytes = 0;
+                        highpercent = 80;
+                        high0 = 50;
+                        high1 = 50;
+                        low0 = 100;
+                        low1 = 0;
+                }
+                downstream {
+                        waittime = 1m;
+                        highkbytes = 0;
+                        highpercent = 80;
+                        high0 = 50;
+                        high1 = 50;
+                        low0 = 100;
+                        low1 = 0;
+                }
+        }
+}
+
+
+dhcpserver {
+        saveinterval = 1h;
+        generic {
+                default_lease_time = 10d;
+                max_lease_time = 13d;
+                default_guest_lease_time = 6h;
+                max_guest_lease_time = 6h;
+        }
+        lan_dns4_server = 0.0.0.0;
+}
+
+
+dhcpclient {
+        metric = 9;
+}
+
+
+dnsserver {
+        cache_maxKB = 256;
+        max_negative_ttl = 1h;
+        latency_probe_interval = 8h;
+        public_fallback_disable_interval = 4h;
+        default_empty_ttl = 5m;
+}
+
+
+ddns {
+        accounts {
+                enabled = no;
+                domain = "";
+                username = "";
+                passwd = "";
+                ddnsprovider = "<userdefined>";
+        }
+        types {
+                type = "userdefined";
+                url = "";
+        }
+        provider {
+                name = "<userdefined>";
+                type = "userdefined";
+                livedelay = 4m;
+                touchtime = 0w;
+                server = "";
+                ip6server = "";
+                infourl = "http://";
+                ddnsmode = ddns_v4;
+        }
+        version = 3;
+}
+
+
+webui {
+        username = "";
+        password = "";
+        expertmode = no;
+        event_filter = 2;
+        read_access_without_login = no;
+        cookie = "TLV\\034\\003107\\022\\0020B\\017\\0011\\023\\001y\\013\\b01750802\\n\\0012";
+        webui_cookie_sec = "";
+        app_enabled = no;
+        ipv6_hidden = no;
+        ipv4_hidden = no;
+        ipv6_native_hidden = no;
+        ds_lite_hidden = no;
+        ata_hidden = no;
+        lanbridges_gui_hidden = yes;
+        voip_2ndPVC_hidden = no;
+        country_gui_hidden = no;
+        dns6_hidden = no;
+        providerlist_persistent = "medium=extern";
+        skip_enternewpassword = no;
+        version = "118102";
+        dev_origins_enabled = no;
+        rest_api_webvar_filter = yes;
+        rest_api_endpoint_security = yes;
+        access_without_sid_enabled = no;
+        sid_timeout_minutes = 20;
+        data_privacy_version = "1";
+        config_imported = no;
+        gui_assistant_completed = 2;
+        userlist_hidden = no;
+}
+
+
+capiovertcp {
+        enabled = no;
+        maxctrl = 1;
+        port = 5031;
+}
+
+
+emailnotify {
+        enabled = no;
+        infoenabled = 0;
+        interval = daily;
+        From = "";
+        To = "";
+        infomail_To = "";
+        SMTPServer = "";
+        accountname = "";
+        passwd = "";
+        show_eventlist = yes;
+        show_voipstat = yes;
+        show_kidsstat = yes;
+        show_onlinecntstat = yes;
+        show_fonstat = yes;
+        show_network_list = yes;
+        starttls = yes;
+        enable_incident_supportdata = no;
+        enable_startup_supportdata = no;
+        crashreport_mode = to_support_only;
+        crashreport_name = "";
+        dsl_detail = no;
+        fiber_detail = no;
+        enable_connect_mail = no;
+        connect_mail_To = "";
+        reset_pwd_enabled = yes;
+        FWUpdatehint {
+                enabled = yes;
+                To = "";
+        }
+        Config {
+                enabled = no;
+                To = "";
+        }
+        WlanGuestStatus {
+                enabled = no;
+                To = "";
+        }
+        SecurityMail {
+                enabled = yes;
+                To = "";
+                Login = no;
+        }
+        supportdata_enhanced = yes;
+        mesh_auto_update = yes;
+        meshmaster_hostname = "";
+        meshmaster_productname = "";
+        config_flags = 2;
+        subject_prefix = "";
+}
+
+
+backendsupport {
+        timestamp = "1970-01-01 00:00:00";
+        url = "";
+        id = "";
+        mode = eBsModeUnknown;
+        status = eBsStatusUnknown;
+        sync = eBsSyncNo;
+}
+
+
+night_time_control {
+        enabled = no;
+        time_on = "";
+        time_off = "";
+        ring_blocked = no;
+}
+
+
+ntpclient {
+        server_list = "2.europe.pool.ntp.org";
+        fallback_server = "";
+        chrony_enabled = yes;
+}
+
+
+led {
+        infoled_reason = 0;
+        control = led_on;
+        button_events_disable = no;
+        led_dim_enabled = yes;
+        led_dim_mode = 1;
+        led_dim_brightness = 100;
+}
+
+
+timezone_manual {
+        enabled = no;
+        offset = 0;
+        dst_enabled = no;
+        TZ_string = "";
+}
+
+
+mrouter {
+        igmp_version_for_upstream = 3;
+        igmp_version_for_other = 3;
+        igmp_prio = 48;
+        ssm_enabled = yes;
+}
+
+
+rip {
+}
+
+
+cpu_schedule {
+        dsl_token = 5000;
+        lan_token = 20000;
+}
+
+
+TR_064 {
+        enabled = yes;
+        username = "dslf-config";
+        persistent_data = "";
+        only_https = no;
+        doupdate_require_auth = no;
+        udn = "uuid:739f2409-bccb-40e7-8e6c-989BCBC8EB51";
+        origin_udn = "";
+}
+
+
+landevices {
+        landevices_version = 5;
+}
+
+
+multiwan {
+        multiwan_enabled = no;
+        with_voip_pdn = no;
+        with_vlan_pdn = no;
+        ipv6_lte {
+                enabled = no;
+                ipv6mode = ipv6_off;
+                ipv4mode = ipv4_normal;
+                use_fixed_mtu = no;
+                fixed_mtu = 1280;
+                dhcpv6c_use_wanted_prefixlen = no;
+                dhcpv6c_wanted_prefixlen = 62;
+                dhcpv6c_use_rapid_commit = yes;
+                ip6_6to4static_cfg {
+                        popaddr = 0.0.0.0;
+                        local = ::;
+                        remote = ::;
+                        prefix = ::;
+                        prefixlen = 0;
+                }
+                ip6_6rd_cfg {
+                        popaddr = 192.88.99.1;
+                        prefix = 2002::;
+                        prefixlen = 16;
+                        ipv4masklen = 0;
+                }
+                ip6_static_cfg {
+                        prefix = ::;
+                        prefixlen = 56;
+                        wan_use_firstprefix = yes;
+                        wan_prefix = ::;
+                        wan_ifid_automatic = yes;
+                        wan_ifid = ::;
+                        wan_dns1 = ::;
+                        wan_dns2 = ::;
+                }
+                aftr = ::;
+                manual_aftrfqdn = "";
+                use_gw_as_pcpserver = no;
+        }
+}
+
+
+prios {
+        profiles {
+                name = "profile_http";
+                profile_id = "1";
+                rules = "TCP 80 0 0 0";
+                filter = "reject tcp any eq 80 any";
+        } {
+                name = "profile_ftp";
+                profile_id = "2";
+                rules = "TCP 20 21 0 0";
+                filter = "reject tcp any range 20 21 any";
+        } {
+                name = "profile_emule";
+                profile_id = "3";
+                rules = "TCP 0 0 4662 0", "UDP 0 0 4672 0";
+                filter = "reject tcp any any eq 4662",
+                         "reject udp any any eq 4672";
+        } {
+                name = "profile_torrent";
+                profile_id = "4";
+                rules = "TCP 0 0 6881 6999";
+                filter = "reject tcp any any range 6881 6999";
+        } {
+                name = "profile_rdp";
+                profile_id = "5";
+                rules = "TCP 3389 0 0 0";
+                filter = "reject tcp any eq 3389 any";
+        } {
+                name = "profile_ssh";
+                profile_id = "6";
+                rules = "TCP 0 0 22 0";
+                filter = "reject tcp any any eq 22";
+        } {
+                name = "profile_telnet";
+                profile_id = "7";
+                rules = "TCP 0 0 23 0";
+                filter = "reject tcp any any eq 23";
+        } {
+                name = "profile_not_surf";
+                profile_id = "8";
+                rules = "TCP 0 0 1 24", "TCP 0 0 26 79", "TCP 0 0 81 109",
+                        "TCP 0 0 111 142", "TCP 0 0 144 442",
+                        "TCP 0 0 444 464", "TCP 0 0 466 586",
+                        "TCP 0 0 588 992", "TCP 0 0 994 994",
+                        "TCP 0 0 996 8079", "TCP 0 0 8081 65535",
+                        "UDP 0 0 0 0";
+                filter = "reject tcp any any range 1 24",
+                         "reject tcp any any range 26 79",
+                         "reject tcp any any range 81 109",
+                         "reject tcp any any range 111 142",
+                         "reject tcp any any range 144 442",
+                         "reject tcp any any range 444 464",
+                         "reject tcp any any range 466 586",
+                         "reject tcp any any range 588 992",
+                         "reject tcp any any range 994 994",
+                         "reject tcp any any range 996 8079",
+                         "reject tcp any any range 8081 65535",
+                         "reject udp any any";
+        }
+}
+
+
+nqos {
+        version = 16;
+        macaddr_whitelist_enabled = no;
+        bridge_with_switch_separation = yes;
+        bridge_lp_mode = -1;
+        patch1TR114 = no;
+        defaultresult {
+                tos = -1;
+                vlan_prio = -1;
+                queueref = "default";
+        }
+        appls {
+                enabled = yes;
+                name = "sip-appl";
+                protocol = qos_classifier_appl_sip;
+                result {
+                        tos = -1;
+                        vlan_prio = -1;
+                        queueref = "hrealtime";
+                }
+        }
+        classifiers {
+                enabled = yes;
+                name = "clfy_voip";
+                type = qos_cfg_internal;
+                iface = qos_local;
+                rule = "localmark sip";
+                result {
+                        tos = -1;
+                        vlan_prio = -1;
+                        queueref = "hrealtime";
+                }
+        } {
+                enabled = yes;
+                name = "clfy_voip";
+                type = qos_cfg_internal;
+                iface = qos_local;
+                rule = "localmark rtp";
+                result {
+                        tos = -1;
+                        vlan_prio = -1;
+                        queueref = "hrealtime";
+                }
+        } {
+                enabled = yes;
+                name = "clfy_voip";
+                type = qos_cfg_internal;
+                iface = qos_local;
+                rule = "localmark sip_internet";
+                result {
+                        tos = -1;
+                        vlan_prio = -1;
+                        queueref = "hrealtime";
+                }
+        } {
+                enabled = yes;
+                name = "clfy_voip";
+                type = qos_cfg_internal;
+                iface = qos_local;
+                rule = "localmark rtp_internet";
+                result {
+                        tos = -1;
+                        vlan_prio = -1;
+                        queueref = "hrealtime";
+                }
+        } {
+                enabled = yes;
+                name = "tr069";
+                type = qos_cfg_hidden;
+                iface = qos_local;
+                rule = "localmark sipdns,ntpdns,tr069dns,tr069";
+                result {
+                        tos = -1;
+                        vlan_prio = -1;
+                        queueref = "hprio";
+                }
+        } {
+                enabled = yes;
+                name = "igmp";
+                type = qos_cfg_hidden;
+                iface = qos_local;
+                rule = "localmark igmp";
+                result {
+                        tos = -1;
+                        vlan_prio = -1;
+                        queueref = "ifacectl";
+                }
+        } {
+                enabled = yes;
+                name = "webdav";
+                type = qos_cfg_hidden;
+                iface = qos_local;
+                rule = "localmark webdav";
+                result {
+                        tos = -1;
+                        vlan_prio = -1;
+                        queueref = "low";
+                }
+        } {
+                enabled = yes;
+                name = "dns";
+                type = qos_cfg_hidden;
+                iface = qos_local;
+                rule = "localmark dns";
+                result {
+                        tos = -1;
+                        vlan_prio = -1;
+                        queueref = "hprio";
+                }
+        } {
+                enabled = yes;
+                name = "mstv";
+                type = qos_cfg_hidden;
+                iface = qos_lan;
+                rule = "udp.dport 43962,47806";
+                result {
+                        tos = -1;
+                        vlan_prio = -1;
+                        queueref = "hprio";
+                }
+        } {
+                enabled = yes;
+                name = "icmp-v6";
+                type = qos_cfg_hidden;
+                iface = qos_lan;
+                rule = "ip.proto IPv6-ICMP";
+                result {
+                        tos = -1;
+                        vlan_prio = -1;
+                        queueref = "hprio";
+                }
+        } {
+                enabled = yes;
+                name = "icmp";
+                type = qos_cfg_hidden;
+                iface = qos_lan;
+                rule = "ip.proto icmp";
+                result {
+                        tos = -1;
+                        vlan_prio = -1;
+                        queueref = "hprio";
+                }
+        } {
+                enabled = yes;
+                name = "dns";
+                type = qos_cfg_hidden;
+                iface = qos_lan;
+                rule = "udp.dport 53";
+                result {
+                        tos = -1;
+                        vlan_prio = -1;
+                        queueref = "hprio";
+                }
+        } {
+                enabled = yes;
+                name = "clfy_voip";
+                type = qos_cfg_internal;
+                iface = qos_lan;
+                rule = "udp.dport 5060";
+                result {
+                        tos = -1;
+                        vlan_prio = -1;
+                        queueref = "hrealtime";
+                        applref = "sip-appl";
+                }
+        } {
+                enabled = no;
+                name = "clfy_www";
+                type = qos_cfg_system;
+                iface = qos_lan;
+                rule = "tcp.dest 80,3128,8080 ip.len <= 800";
+                result {
+                        tos = -1;
+                        vlan_prio = -1;
+                        queueref = "none";
+                }
+        } {
+                enabled = yes;
+                name = "clfy_voip";
+                type = qos_cfg_internal;
+                iface = qos_lan;
+                rule = "tcp.dport 5060";
+                result {
+                        tos = -1;
+                        vlan_prio = -1;
+                        queueref = "hrealtime";
+                        applref = "sip-appl";
+                }
+        } {
+                enabled = yes;
+                name = "lcp";
+                type = qos_cfg_hidden;
+                iface = qos_local;
+                rule = "localmark lcp";
+                result {
+                        tos = -1;
+                        vlan_prio = -1;
+                        queueref = "ifacectl";
+                }
+        }
+        queues {
+                enabled = yes;
+                with_sfq = no;
+                type = qos_cfg_system;
+                name = "ifacectl";
+                iface = qos_wan;
+                queue_type = queue_llq;
+                precedence = 0;
+                weight = 0;
+                shapingrate = 0;
+                shapingburst = 0;
+                allow_more = yes;
+                ceilrate = 0;
+        } {
+                enabled = yes;
+                with_sfq = no;
+                type = qos_cfg_system;
+                name = "hprio";
+                iface = qos_wan;
+                queue_type = queue_llq;
+                precedence = 10;
+                weight = 0;
+                shapingrate = 0;
+                shapingburst = 0;
+                allow_more = yes;
+                ceilrate = 0;
+        } {
+                enabled = yes;
+                with_sfq = no;
+                type = qos_cfg_system;
+                name = "hrealtime";
+                iface = qos_wan;
+                queue_type = queue_llq;
+                precedence = 20;
+                weight = 0;
+                shapingrate = 0;
+                shapingburst = 0;
+                allow_more = yes;
+                ceilrate = 0;
+        } {
+                enabled = yes;
+                with_sfq = yes;
+                type = qos_cfg_system;
+                name = "realtime";
+                iface = qos_wan;
+                queue_type = queue_llq;
+                precedence = 30;
+                weight = 0;
+                shapingrate = 0;
+                shapingburst = 0;
+                allow_more = yes;
+                ceilrate = 0;
+        } {
+                enabled = yes;
+                with_sfq = yes;
+                type = qos_cfg_system;
+                name = "important";
+                iface = qos_wan;
+                queue_type = queue_llq;
+                precedence = 100;
+                weight = 0;
+                shapingrate = 0;
+                shapingburst = 0;
+                allow_more = yes;
+                ceilrate = 0;
+        } {
+                enabled = yes;
+                with_sfq = yes;
+                type = qos_cfg_system;
+                name = "default";
+                iface = qos_wan;
+                queue_type = queue_llq;
+                precedence = 150;
+                weight = 0;
+                shapingrate = 0;
+                shapingburst = 0;
+                allow_more = yes;
+                ceilrate = 0;
+        } {
+                enabled = yes;
+                with_sfq = yes;
+                type = qos_cfg_system;
+                name = "low";
+                iface = qos_wan;
+                queue_type = queue_llq;
+                precedence = 200;
+                weight = 0;
+                shapingrate = 0;
+                shapingburst = 0;
+                allow_more = yes;
+                ceilrate = 0;
+        }
+        ratelimits {
+                enabled = yes;
+                name = "dhcpv6";
+                type = qos_cfg_system;
+                iface = qos_lan;
+                rule = "ip.version 6 udp.dport 547";
+                packets = 10;
+                interval = 1s;
+                early = 0;
+        } {
+                enabled = yes;
+                name = "rs";
+                type = qos_cfg_system;
+                iface = qos_lan;
+                rule = "ip.version 6 icmp.type 133";
+                packets = 10;
+                interval = 1s;
+                early = 0;
+        } {
+                enabled = yes;
+                name = "ns";
+                type = qos_cfg_system;
+                iface = qos_lan;
+                rule = "ip.version 6 icmp.type 135";
+                packets = 10;
+                interval = 1s;
+                early = 0;
+        } {
+                enabled = yes;
+                name = "na";
+                type = qos_cfg_system;
+                iface = qos_lan;
+                rule = "ip.version 6 icmp.type 136";
+                packets = 500;
+                interval = 1s;
+                early = 0;
+        } {
+                enabled = yes;
+                name = "icmpUnreachable";
+                type = qos_cfg_system;
+                iface = qos_lan;
+                rule = "ip.version 6 icmp.type 1";
+                packets = 10;
+                interval = 1s;
+                early = 0;
+        } {
+                enabled = yes;
+                name = "icmpTooBig";
+                type = qos_cfg_system;
+                iface = qos_lan;
+                rule = "ip.version 6 icmp.type 2";
+                packets = 10;
+                interval = 1s;
+                early = 0;
+        } {
+                enabled = yes;
+                name = "icmpTimeExceeded";
+                type = qos_cfg_system;
+                iface = qos_lan;
+                rule = "ip.version 6 icmp.type 3";
+                packets = 10;
+                interval = 1s;
+                early = 0;
+        } {
+                enabled = yes;
+                name = "icmpEchoRequest";
+                type = qos_cfg_system;
+                iface = qos_lan;
+                rule = "ip.version 6 icmp.type 128";
+                packets = 10;
+                interval = 1s;
+                early = 0;
+        } {
+                enabled = yes;
+                name = "icmpEchoReply";
+                type = qos_cfg_system;
+                iface = qos_lan;
+                rule = "ip.version 6 icmp.type 129";
+                packets = 10;
+                interval = 1s;
+                early = 0;
+        } {
+                enabled = yes;
+                name = "dhcpv4";
+                type = qos_cfg_system;
+                iface = qos_lan;
+                rule = "ip.version 4 udp.dport 67";
+                packets = 20;
+                interval = 1s;
+                early = 0;
+        } {
+                enabled = yes;
+                name = "TCPsynFlag";
+                type = qos_cfg_system;
+                iface = qos_wan;
+                rule = "tcp.flags 0x002/0xfff";
+                packets = 1000;
+                interval = 1s;
+                early = 0;
+        } {
+                enabled = yes;
+                name = "ra";
+                type = qos_cfg_system;
+                iface = qos_lan;
+                rule = "ip.version 6 icmp.type 134";
+                packets = 10;
+                interval = 1s;
+                early = 1;
+        }
+        dyn_queues {
+                enabled = yes;
+                queueref = "default";
+                tack_queueref = "important";
+                tget_queueref = "realtime";
+        }
+        regulation {
+                enabled = no;
+                type = moderate;
+                queues {
+                        enabled = yes;
+                        queueref = "important";
+                        ds_weight_min = 10;
+                        ds_weight_max = 0;
+                } {
+                        enabled = no;
+                        queueref = "default";
+                        ds_weight_min = 10;
+                        ds_weight_max = 0;
+                } {
+                        enabled = yes;
+                        queueref = "low";
+                        ds_weight_min = 10;
+                        ds_weight_max = 0;
+                }
+        }
+}
+
+
+eth_port_config {
+        version = 12;
+        port {
+                portnumber = 1;
+                maxspeed = 4294967295;
+                config_mode = mode_wan;
+                dev = "eth0";
+                label = "LAN:1";
+                eee_mode = eth_eee_mode_auto;
+        } {
+                portnumber = 2;
+                maxspeed = 4294967295;
+                config_mode = mode_normal;
+                dev = "eth1";
+                label = "LAN:2";
+                eee_mode = eth_eee_mode_auto;
+        } {
+                portnumber = 3;
+                maxspeed = 100;
+                config_mode = mode_normal;
+                dev = "eth2";
+                label = "LAN:3";
+                eee_mode = eth_eee_mode_auto;
+        } {
+                portnumber = 4;
+                maxspeed = 100;
+                config_mode = mode_normal;
+                dev = "eth3";
+                label = "LAN:4";
+                eee_mode = eth_eee_mode_auto;
+        }
+        default_guest_ethernet_port = "LAN:4";
+        eee_off_for_all_ports = no;
+}
+
+
+ethernet_eco {
+}
+
+
+unattended_update {
+        update_found = no;
+        running_version = "";
+        no_update_found_time = "2025-09-29 20:29:06";
+        update_found_time = "1970-01-01 00:00:00";
+        priority = 0;
+        check_intervall = 48;
+        enabled = yes;
+        auto_update_enable = yes;
+        auto_update_all_enabled = no;
+        info_url = "";
+        cfg_version = 2;
+        auto_update_last_check_time = "2025-09-29 20:29:06";
+        update_found_version = "";
+        fwupdatehintmail_time = "1970-01-01 00:00:00";
+        predownload_url = "";
+        maintenance_window_enabled = no;
+        maintenance_window_start = 1d;
+}
+
+
+avmlogd {
+        enabled = no;
+        redzonecheck = no;
+}
+
+
+speedtest {
+        enabled = no;
+        bidirect_enabled = no;
+        wanaccess = no;
+        twamp {
+                enabled = no;
+                port = 862;
+                maxttl = 255;
+        }
+}
+
+
+provider_default {
+}
+
+
+jasonii {
+        enabled = no;
+        user_email = "";
+        upstream_sync_pending = yes;
+        https_username_sync = no;
+        box_register_tries = 0;
+}
+
+
+boxusers {
+        users {
+                enabled = yes;
+                id = 11;
+                name = "$$$$UPM2PIOHNDAYMXC4BYV3JL3J1OU1VEU3EIH4EZSMY1EXWSTFC4L3R6YA4B1YY3ESEST2IMP65YMUAAYA";
+                password = "$$$$NJ2UYR1VQTHMVGJB1WRE3UUQVYGLDRDH4SMEPQLF6N5BEAFEIZ2SVPFXKL12P5C3HZKA4BIP452B1AYA";
+                vpn_access = no;
+                googleauth_sharedsecret = "";
+                googleauth_devicename = "";
+                googleauth_setupdate = "1970-01-01 00:00:00";
+                box_admin_rights = secobj_access_rights_readwrite_from_homenetwork_only;
+                nas_rights = secobj_access_rights_readwrite_from_homenetwork_only;
+                phone_rights = secobj_access_rights_readwrite_from_homenetwork_only;
+                homeauto_rights = secobj_access_rights_readwrite_from_homenetwork_only;
+        } {
+                enabled = yes;
+                id = 10;
+                name = "$$$$GSWNNIACUOYXXPHCMCEXHMPVRDSOC1VVD5PRCKSUK4GJTOZE3QFUKHFEUEED5TK43JWYW2IWKLX4MAYA";
+                email = "";
+                password = "$$$$IR4RNVSDKSZCHQYQHRNEFJNGBJLYVSZFNAQSS3NCR3OEXHWCPSHPT5D5JUYFNJKUHEKMMQBD43YWOAYA";
+                vpn_access = no;
+                googleauth_sharedsecret = "";
+                googleauth_devicename = "";
+                googleauth_setupdate = "1970-01-01 00:00:00";
+                box_admin_rights = secobj_access_rights_none;
+                nas_rights = secobj_access_rights_readwrite_from_homenetwork_only;
+                phone_rights = secobj_access_rights_none;
+                homeauto_rights = secobj_access_rights_none;
+        }
+        remote_access_id = 0;
+        version = 2;
+        two_factor_auth_enabled = yes;
+        tfa_cfg_version = 1;
+        myfritz_boxuser_id = 0;
+}
+
+
+powerline {
+        enabled = yes;
+        allow_standby = yes;
+        power_save_ex = 2;
+        auto_update_all_enabled = yes;
+        version = 0;
+}
+
+
+hotspotcfg {
+}
+
+
+l2tpcfg {
+        master_disabled = no;
+        fixed_server = 0.0.0.0;
+}
+
+
+apps {
+        next_keepalive = "1970-01-01 00:00:00";
+}
+
+
+update_state {
+        update_time = "2025-07-19 05:00:05";
+        last_version = "175.07.14,73182";
+        info_url = "";
+}
+
+
+messages_from_manufacturer {
+        checked_time = "2025-09-29 20:24:57";
+        found = no;
+        check_intervall = 48;
+        present_message_ids = "1-";
+}
+
+
+letsencrypt {
+        enabled = no;
+        last_check = "1970-01-01 00:00:00";
+}
+
+
+pcp {
+}
+
+
+avmcountercfg {
+        rrddir = "/var/tmp/rrd";
+        rrdbackupdir = "/var/media/ftp/FRITZ/rrd";
+}
+
+
+boxmove_dest {
+        state = dest_state_none;
+        inetassi_after_import = no;
+        voipassi_after_import = no;
+        sid_ip = ::;
+}
+
+
+asset_bundle_download {
+        check_interval = 93523;
+        last_check = "2025-09-29 20:25:28";
+}
+
+
+// EOF
+
+**** END OF FILE ****
+**** CFGFILE:wlan.cfg
+/*
+ * /var/tmp.cfg
+ * Thu Jan  1 01:10:12 1970
+ */
+
+meta { encoding = "utf-8"; }
+
+wlancfg {
+        wlancfg_version = 39;
+        country = "049";
+        language = "de";
+        bridge_mode = "bridge-none";
+        auto_settings = 2;
+        auto_update = 1;
+        ap_enabled = 1;
+        ap_enabled_saved = 1;
+        ap_enabled_scnd = 1;
+        ap_enabled_thrd = 0;
+        ap_enabled_frth = 0;
+        ap_enabled_scnd_saved = 1;
+        ap_enabled_thrd_saved = 0;
+        ap_enabled_frth_saved = 0;
+        mld_ap_enabled = 0;
+        mld_ap_encryption = 5;
+        mld_ap_ssid = "FritzBoxMLD";
+        channel = 0;
+        channel_scnd = 0;
+        channel_thrd = 0;
+        channel_frth = 0;
+        channelwidth = 1;
+        channelwidth_scnd = 2;
+        channelwidth_thrd = 1;
+        channelwidth_frth = 1;
+        ssid = "FRITZ!Box 7520 WJ";
+        ssid_scnd = "FRITZ!Box 7520 WJ";
+        ssid_thrd = "FritzBox";
+        ssid_frth = "FritzBox";
+        hidden_ssid = 0;
+        power_level = 1;
+        bg_mode = 23;
+        bg_mode_scnd = 53;
+        bg_mode_thrd = 52;
+        bg_mode_frth = 61;
+        user_isolation = 0;
+        encryption = 3;
+        encryption_frth = 5;
+        encryption_interop = 1;
+        pskvalue = "$$$$CN6DTK3WHCVNWWHE6B3QVG3NW5TGCOAGTHBKLGOMCI3QC3IWJQYCFERH43JPCKJ5YIAYA3RSP43SOAAA";
+        interval = 3600;
+        turbomode = yes;
+        wlan_coexistence = 1;
+        mac_accesslist_state = 0;
+        event_control = 6;
+        band_steering = yes;
+        pmf_mode = 0;
+        pmf_mode_uplink = 0;
+        wlan_config_status = "";
+        outdoor_mode = 0;
+        WDS_enabled = no;
+        WDS2_enabled = no;
+        WDS_hop = 0;
+        WDS_mac_master = 00:00:00:00:00:00;
+        WDS_mac_slave0 = 00:00:00:00:00:00;
+        WDS_mac_slave1 = 00:00:00:00:00:00;
+        WDS_mac_slave2 = 00:00:00:00:00:00;
+        WDS_mac_slave3 = 00:00:00:00:00:00;
+        WDS_encryption = 3;
+        WDS_key = "";
+        WDS_ssid = "";
+        night_time_control_enabled = no;
+        night_time_control_no_forced_off = yes;
+        night_time_control_with_reconnect = yes;
+        night_time_control_auto_update = yes;
+        guest_mld_ap_enabled = 0;
+        guest_mld_ap_encryption = 5;
+        guest_mld_ap_ssid = "";
+        guest_mode = 1;
+        guest_ssid_set = no;
+        guest_ap_enabled = no;
+        guest_timeout_active = no;
+        guest_timeout_minutes = 30;
+        guest_no_forced_off = no;
+        guest_ssid = "FRITZ!Box Gastzugang";
+        guest_encryption = 3;
+        guest_encryption_frth = 5;
+        guest_pskvalue = "";
+        guest_ap_auto_update = yes;
+        guest_user_isolation = yes;
+        greenmode_enabled = no;
+        IPTVoptimize = yes;
+        wireless_stickandsurf_enabled = no;
+        tx_autopower = no;
+        autochannel_plus = no;
+        autochannel_plus_11a = no;
+        force_channel_conversion = no;
+        STA_configured = no;
+        STA_configured_scnd = no;
+        STA_configured_thrd = no;
+        STA_configured_frth = no;
+        STA_enabled = no;
+        STA_enabled_scnd = no;
+        STA_enabled_thrd = no;
+        STA_enabled_frth = no;
+        STA_ssid = "";
+        STA_ssid_scnd = "";
+        STA_ssid_thrd = "";
+        STA_ssid_frth = "";
+        STA_mac_master = 00:00:00:00:00:00;
+        STA_mac_master_scnd = 00:00:00:00:00:00;
+        STA_mac_master_thrd = 00:00:00:00:00:00;
+        STA_mac_master_frth = 00:00:00:00:00:00;
+        STA_encryption = 0;
+        STA_encryption_scnd = 0;
+        STA_encryption_thrd = 0;
+        STA_encryption_frth = 0;
+        STA_pskvalue = "";
+        STA_pskvalue_scnd = "";
+        STA_pskvalue_thrd = "";
+        STA_pskvalue_frth = "";
+        STA_mode = 0;
+        STA_mode_scnd = 0;
+        STA_mode_thrd = 0;
+        STA_mode_frth = 0;
+        STA_overwrite_ap_config = yes;
+        STA_repeating_mode = 0;
+        uapsd_supported = no;
+        uapsd_enable = no;
+        wmm_enabled = yes;
+        wmm_supported = yes;
+        wmm_ap_aifsn = 10;
+        wmm_ap_ecwmin = 3;
+        wmm_ap_ecwmax = 7;
+        wmm_ap_txop = 1;
+        wmm_ap_ackpolicy = no;
+        wmm_sta_aifsn = 10;
+        wmm_sta_ecwmin = 3;
+        wmm_sta_ecwmax = 7;
+        wmm_sta_txop = 1;
+        wmm_sta_ackpolicy = no;
+        wps_enable = yes;
+        wps_devicename = "FBox";
+        wps_uuid = "cdc09b93-70fa-dec5-4902-c8cb9b9853eb";
+        wps_version = 16;
+        wps_config_methods_supported = "PushButton";
+        wps_config_methods_enabled = "PushButton";
+        wps_setup_locked_state = "Unlocked";
+        wps_setup_lock = no;
+        wps_configuration_state = "Configured";
+        wps_last_configuration_error = "NoError";
+        wps_registrar_number_of_entries = 0;
+        wps_registrar_established = no;
+        wps_registrar_enable = no;
+        wps_registrar_uuid = "";
+        wps_registrar_devicename = "";
+        wps_guest_uuid = "69c89cfd-1ffc-590d-c48f-a1df91bfb8cc";
+        feature_wlan_coexistence = -1;
+        debug_settings {
+                trace_state = wlancfg_trace_state_off;
+                trace_parameter = "";
+        }
+        client_stations {
+                mac = C2:D4:9D:36:72:29;
+                type = 1;
+        } {
+                mac = D4:61:9D:26:CB:9A;
+                type = 1;
+        } {
+                mac = 88:10:8F:DE:87:F6;
+                type = 1;
+        } {
+                mac = CE:58:6D:0B:C3:02;
+                type = 1;
+        } {
+                mac = 38:F9:D3:78:FB:B9;
+                type = 1;
+        } {
+                mac = 98:5F:D3:D1:48:FA;
+                type = 1;
+        } {
+                mac = 2C:0E:3D:E4:5A:5C;
+                type = 1;
+        } {
+                mac = C0:F8:DA:2C:F4:15;
+                type = 1;
+        } {
+                mac = E4:F8:9C:89:15:E8;
+                type = 1;
+        } {
+                mac = BC:54:36:27:71:55;
+                type = 1;
+        } {
+                mac = 04:72:95:31:42:95;
+                type = 1;
+        } {
+                mac = 00:21:6B:F1:6D:19;
+                type = 1;
+        } {
+                mac = E0:DC:FF:0E:E5:2F;
+                type = 1;
+        } {
+                mac = 84:BE:52:B3:DB:E3;
+                type = 1;
+        } {
+                mac = 10:4A:7D:A5:FA:6E;
+                type = 1;
+        } {
+                mac = 04:D6:AA:C1:C7:2D;
+                type = 1;
+        } {
+                mac = D8:90:E8:A5:C2:89;
+                type = 1;
+        } {
+                mac = FC:AA:B6:B3:BB:06;
+                type = 1;
+        } {
+                mac = A0:80:69:A2:B2:C3;
+                type = 1;
+        }
+        radios {
+                id = 1;
+                band = wlancfg_radio_band_2_ghz;
+                channel = 0;
+                autochannel_plus = no;
+                autochannel_plus_11a = no;
+        } {
+                id = 2;
+                band = wlancfg_radio_band_5_ghz;
+                channel = 0;
+                autochannel_plus = no;
+                autochannel_plus_11a = no;
+        }
+        acl_config {
+                autofill_enable = no;
+        }
+}
+
+
+// EOF
+
+**** END OF FILE ****
+**** CFGFILE:broadband.cfg
+/*
+ * /var/tmp.cfg
+ * Thu Jan  1 01:10:12 1970
+ */
+
+meta { encoding = "utf-8"; }
+
+bbcfg {
+        bbcfg_version = 5;
+        bbcfg_status = 1;
+        dsl {
+                xdslmode = 0;
+                bonding = no;
+                large_mtu = no;
+        }
+        fiber {
+                pwsGPONPLOAMPassword = "";
+                pwsGPONSerial = "";
+                pwsGPONRegId = "";
+                veip = no;
+                bridge = no;
+                veip_toggle = no;
+                gpon_iop_bits = 0;
+                gpon_iop_mask = 0;
+                gpon_iop_prov_bits = 0;
+                gpon_iop_prov_mask = 0;
+                ploam_state_o7_active = no;
+                mode_detection {
+                        mode = SFP_TYPE_UNKNOWN;
+                        state = FIBER_MODE_CONFIG_STATE_AUTO;
+                }
+        }
+        sfp {
+                sfp_id = "";
+                sfp_serial = "";
+        }
+}
+
+
+// EOF
+
+**** END OF FILE ****
+**** CFGFILE:voip.cfg
+/*
+ * /var/tmp.cfg
+ * Thu Jan  1 01:10:12 1970
+ */
+
+meta { encoding = "utf-8"; }
+
+voipcfg {
+        dnsport = 7077;
+        rtpport_start = 7078;
+        sip_srcport = 5060;
+        ua1 {
+                enabled = yes;
+                username = "$$$$XL3TFHRMGTKUW6CB5BBA2AHIEET5RMVPHWBAFIUKJ61K1TEWAIN3NVSLQDLTQRURBEPBSYRMFS13AAYA";
+                authname = "";
+                authname_needed = no;
+                passwd = "$$$$ZOMDJNY5PHBN5DCCTPHXPJ2NLUC43XDTZMMBHZFJMGXMYK3OG5MYR6ARQF4RETN1ANHTBD1TLMDPMAYA";
+                registrar = "sip.1und1.de";
+                ttl = 30m;
+                sipping_enabled = yes;
+                sipping_interval = 280s;
+                sip_options_ping_interval = 0w;
+                name = "23795673";
+                providername = "";
+                voip_providerlist_id = "1und1";
+                ims_client = no;
+                with_displayname = no;
+                read_from_displayname = yes;
+                dtmfcfg = dtmfcfg_rtp_or_inband;
+                rtpevent_keep_packetrate = no;
+                register_failwait = 0w;
+                register_failwaitmax = 30m;
+                register_failover_fallback_process = no;
+                failover_5xx_with_retry_after = yes;
+                failover_5xx_register_after_invite = no;
+                stunserver = "";
+                stunserverport = 3478;
+                use_internat_calling_numb = no;
+                is_nat_aware = no;
+                protocolprefer = protocolprefer_ipv4only;
+                ignore_received_header = no;
+                clirtype = clir_rfc3325;
+                reject_anonymous_call_with_433 = no;
+                colptype = colp_none;
+                clipnstype = clipns_off;
+                vad_enabled = no;
+                only_one_dialog = no;
+                mwi_supported = no;
+                mwi_inmemoria = no;
+                ccbs_supported = yes;
+                reg_support = regsupport_auto;
+                packetization = packetization_b_side;
+                tx_packetsize_in_ms = 20;
+                reject_refer = yes;
+                sip_instance = no;
+                no_register_fetch = no;
+                do_not_register = no;
+                only_call_from_registrar = no;
+                mobile_capability = voip_over_mobile_all;
+                invite_without_register_allowed = no;
+                outboundproxy = "";
+                outboundproxy_without_route_header = no;
+                factory_3pty_uri = "";
+                no_hold_speech = no;
+                dditype = ddi_none;
+                ddireception = "";
+                ddimynumber_with_plusprefix = no;
+                webui_trunk_id = "";
+                alias_head_number = "";
+                cfxsignaling = cfx_standard;
+                backup_wanted = no;
+                use_session_timer = no;
+                use_rport = yes;
+                answer_only_one_codec = yes;
+                without_annexb_no = no;
+                transport_type = transport_unspec;
+                srtp_supported = no;
+                crypto_avp_mode = crypto_mode_avp_only;
+                use_488_for_no_t38 = no;
+                g726_via_rfc3551 = no;
+                no_g726_32_offer_with_pt2 = no;
+                g726_fixed_ptime30 = no;
+                dtmf_inband_on_g711g722 = no;
+                enable_3xx = yes;
+                t38_reinvite_from_remote = no;
+                use_t38version0 = no;
+                rtcp_xr_media_attribute = no;
+                ptime_a_attribute = yes;
+                tones_and_announcements_for_service = no;
+                read_p_asserted_identity_header = no;
+                route_always_over_internet = no;
+                sipiface = sipiface_automatic;
+                altc_attribute_rfc6947 = no;
+                send_extended_sip_client_info = yes;
+                gui_readonly = no;
+                convertstate = 0;
+                snmp_instance = 0;
+                loopback_client_username_fos = "";
+                loopback_client_username_pass_through = "";
+                directloopback_client_username = "";
+                call_deflection = no;
+        }
+        ua2 {
+                enabled = yes;
+                username = "$$$$56YS36EQTCUZVIBM466BGVITPZUNHYKUEFP413ZNJSX32UM5VAL1E42KZXRYO2HBL5OCH4UVE3RX3AYA";
+                authname = "";
+                authname_needed = no;
+                passwd = "$$$$C3Z1NNLVBENGOU2J6OC3FI4PDCMMSTVDDLH3VWKHOZQQFE46WSE4TFWEDQGELVNW4PSBP1V5UWKWMAYA";
+                registrar = "sip.1und1.de";
+                ttl = 30m;
+                sipping_enabled = yes;
+                sipping_interval = 280s;
+                sip_options_ping_interval = 0w;
+                name = "23796666";
+                providername = "";
+                voip_providerlist_id = "1und1";
+                ims_client = no;
+                with_displayname = no;
+                read_from_displayname = yes;
+                dtmfcfg = dtmfcfg_rtp_or_inband;
+                rtpevent_keep_packetrate = no;
+                register_failwait = 0w;
+                register_failwaitmax = 30m;
+                register_failover_fallback_process = no;
+                failover_5xx_with_retry_after = yes;
+                failover_5xx_register_after_invite = no;
+                stunserver = "";
+                stunserverport = 3478;
+                use_internat_calling_numb = no;
+                is_nat_aware = no;
+                protocolprefer = protocolprefer_ipv4only;
+                ignore_received_header = no;
+                clirtype = clir_rfc3325;
+                reject_anonymous_call_with_433 = no;
+                colptype = colp_none;
+                clipnstype = clipns_off;
+                vad_enabled = no;
+                only_one_dialog = no;
+                mwi_supported = no;
+                mwi_inmemoria = no;
+                ccbs_supported = yes;
+                reg_support = regsupport_auto;
+                packetization = packetization_b_side;
+                tx_packetsize_in_ms = 20;
+                reject_refer = yes;
+                sip_instance = no;
+                no_register_fetch = no;
+                do_not_register = no;
+                only_call_from_registrar = no;
+                mobile_capability = voip_over_mobile_all;
+                invite_without_register_allowed = no;
+                outboundproxy = "";
+                outboundproxy_without_route_header = no;
+                factory_3pty_uri = "";
+                no_hold_speech = no;
+                dditype = ddi_none;
+                ddireception = "";
+                ddimynumber_with_plusprefix = no;
+                webui_trunk_id = "";
+                alias_head_number = "";
+                cfxsignaling = cfx_standard;
+                backup_wanted = no;
+                use_session_timer = no;
+                use_rport = yes;
+                answer_only_one_codec = yes;
+                without_annexb_no = no;
+                transport_type = transport_unspec;
+                srtp_supported = no;
+                crypto_avp_mode = crypto_mode_avp_only;
+                use_488_for_no_t38 = no;
+                g726_via_rfc3551 = no;
+                no_g726_32_offer_with_pt2 = no;
+                g726_fixed_ptime30 = no;
+                dtmf_inband_on_g711g722 = no;
+                enable_3xx = yes;
+                t38_reinvite_from_remote = no;
+                use_t38version0 = no;
+                rtcp_xr_media_attribute = no;
+                ptime_a_attribute = yes;
+                tones_and_announcements_for_service = no;
+                read_p_asserted_identity_header = no;
+                route_always_over_internet = no;
+                sipiface = sipiface_automatic;
+                altc_attribute_rfc6947 = no;
+                send_extended_sip_client_info = yes;
+                gui_readonly = no;
+                convertstate = 0;
+                snmp_instance = 0;
+                loopback_client_username_fos = "";
+                loopback_client_username_pass_through = "";
+                directloopback_client_username = "";
+                call_deflection = no;
+        }
+        ua3 {
+                enabled = yes;
+                username = "$$$$LJSK1MRURW1NWSNVBHBCYOKQQAWINBIGIMXSC6ZRGJFDTYYAW1VVHJERQ664RKAUDJ33FB2BP2EECAYA";
+                authname = "";
+                authname_needed = no;
+                passwd = "$$$$H3KXEJN6WFWGHEV1AXLKTENPYBMHZCCUT1LGZ5YHVF4O23RGWVDPOWKPT5KWYCBUBY4MGAUVJCXZ5AYA";
+                registrar = "sip.1und1.de";
+                ttl = 30m;
+                sipping_enabled = yes;
+                sipping_interval = 280s;
+                sip_options_ping_interval = 0w;
+                name = "54318722";
+                providername = "";
+                voip_providerlist_id = "1und1";
+                ims_client = no;
+                with_displayname = no;
+                read_from_displayname = yes;
+                dtmfcfg = dtmfcfg_rtp_or_inband;
+                rtpevent_keep_packetrate = no;
+                register_failwait = 0w;
+                register_failwaitmax = 30m;
+                register_failover_fallback_process = no;
+                failover_5xx_with_retry_after = yes;
+                failover_5xx_register_after_invite = no;
+                stunserver = "";
+                stunserverport = 3478;
+                use_internat_calling_numb = no;
+                is_nat_aware = no;
+                protocolprefer = protocolprefer_ipv4only;
+                ignore_received_header = no;
+                clirtype = clir_rfc3325;
+                reject_anonymous_call_with_433 = no;
+                colptype = colp_none;
+                clipnstype = clipns_off;
+                vad_enabled = no;
+                only_one_dialog = no;
+                mwi_supported = no;
+                mwi_inmemoria = no;
+                ccbs_supported = yes;
+                reg_support = regsupport_auto;
+                packetization = packetization_b_side;
+                tx_packetsize_in_ms = 20;
+                reject_refer = yes;
+                sip_instance = no;
+                no_register_fetch = no;
+                do_not_register = no;
+                only_call_from_registrar = no;
+                mobile_capability = voip_over_mobile_all;
+                invite_without_register_allowed = no;
+                outboundproxy = "";
+                outboundproxy_without_route_header = no;
+                factory_3pty_uri = "";
+                no_hold_speech = no;
+                dditype = ddi_none;
+                ddireception = "";
+                ddimynumber_with_plusprefix = no;
+                webui_trunk_id = "";
+                alias_head_number = "";
+                cfxsignaling = cfx_standard;
+                backup_wanted = no;
+                use_session_timer = no;
+                use_rport = yes;
+                answer_only_one_codec = yes;
+                without_annexb_no = no;
+                transport_type = transport_unspec;
+                srtp_supported = no;
+                crypto_avp_mode = crypto_mode_avp_only;
+                use_488_for_no_t38 = no;
+                g726_via_rfc3551 = no;
+                no_g726_32_offer_with_pt2 = no;
+                g726_fixed_ptime30 = no;
+                dtmf_inband_on_g711g722 = no;
+                enable_3xx = yes;
+                t38_reinvite_from_remote = no;
+                use_t38version0 = no;
+                rtcp_xr_media_attribute = no;
+                ptime_a_attribute = yes;
+                tones_and_announcements_for_service = no;
+                read_p_asserted_identity_header = no;
+                route_always_over_internet = no;
+                sipiface = sipiface_automatic;
+                altc_attribute_rfc6947 = no;
+                send_extended_sip_client_info = yes;
+                gui_readonly = no;
+                convertstate = 0;
+                snmp_instance = 0;
+                loopback_client_username_fos = "";
+                loopback_client_username_pass_through = "";
+                directloopback_client_username = "";
+                call_deflection = no;
+        }
+        register_sequence_timer = 0;
+        use_krtp = yes;
+        use_audiocodecs = no;
+        audiocodecs = "PCMA", "PCMU", "G726-32", "G726-40", "G726-24";
+        verbose = no;
+        capi_blocksize_in_ms = 30;
+        sip_prio = 0;
+        rtp_prio = 0;
+        rtcp_prio = 0;
+        dyn_codecs = yes;
+        prio_low_codec = no;
+        t38_support_enabled = yes;
+        reduce_data_rate = yes;
+        enum_support_enabled = no;
+        dialoglimit = 0;
+        enumdomains = "e164.arpa", "e164.org", "openenum.eu";
+        rtpstream {
+                voice_activity_detection {
+                        vad_enabled = vadenabled_no;
+                        vad_threshold = 10000;
+                }
+                plc {
+                        in_the_stack = yes;
+                }
+                jitter {
+                        auto_on = yes;
+                        in_ms = 50;
+                        in_packets = 0;
+                }
+                rtcp_enabled = yes;
+                silence_detection = no;
+        }
+        voip_assi_enabled = yes;
+        mobile_capability = voip_over_mobile_no;
+        random_sip_port_enabled = no;
+        random_sip_port_range = "20000-30000";
+        gui_readonly = no;
+        voipcfg_version = 41;
+        extension_version = 1;
+}
+
+
+// EOF
+
+**** END OF FILE ****
+**** CFGFILE:usb.cfg
+/*
+ * /var/tmp.cfg
+ * Thu Jan  1 01:10:12 1970
+ */
+
+meta { encoding = "utf-8"; }
+
+usbhost {
+        readonly = no;
+        password = "";
+        autoprov_enabled = yes;
+        ftp_internet_enabled = no;
+        aura_enabled = no;
+        aura_config = 0;
+        ftp_server_enabled = no;
+        samba_server_enabled = yes;
+        samba_server_workgroup = "WORKGROUP";
+        samba_server_server_string = "FRITZ!Box";
+        users_enabled = yes;
+        acl_directories {
+                path = "/";
+                access {
+                        UserID = 11;
+                        local_read = yes;
+                        local_write = yes;
+                        internet_read = no;
+                        internet_write = no;
+                } {
+                        UserID = 10;
+                        local_read = yes;
+                        local_write = yes;
+                        internet_read = no;
+                        internet_write = no;
+                }
+        }
+        spindown_enabled = yes;
+        spindown_time = 600;
+        usbhost_version = 4;
+        internet_secured_only = no;
+        fritznas_share = "FRITZ.NAS";
+        usb3port_config = 0;
+        volume_labels = yes;
+        ftp_internet_port = 0;
+        nas_enabled = yes;
+        samba_server_smbv1_enabled = no;
+        fritznas_always_index = yes;
+}
+
+
+webdavclient {
+        enabled = no;
+        host_url = "";
+        username = "";
+        password = "";
+        mountpoint = "Online-Speicher";
+        cache_files = 2000;
+}
+
+
+media {
+        media_server_enabled = yes;
+        homedir = "";
+        media_server_name = "AVM FRITZ!Mediaserver";
+}
+
+
+internalflash {
+        enabled = no;
+        mountpoint = "Interner Speicher";
+        converted = no;
+}
+
+
+nasdb {
+        nasdb_autostart = no;
+        nasdb_autoindex = no;
+}
+
+
+// EOF
+
+**** END OF FILE ****
+**** CFGFILE:tr069.cfg
+/*
+ * /var/tmp.cfg
+ * Thu Jan  1 01:10:12 1970
+ */
+
+meta { encoding = "utf-8"; }
+
+tr069cfg {
+        enabled = no;
+        litemode = no;
+        tr181_support = no;
+        dhcp43_support = yes;
+        igd {
+                DeviceInfo {
+                        FirstUseDate = "1970-01-01 00:00:00";
+                }
+                managementserver {
+                        url = "";
+                        username = "";
+                        password = "";
+                        URLAlreadyContacted = no;
+                        FirstConnectDelay = 0;
+                        LastInformReq = "1970-01-01 00:00:00";
+                        LastSuccessfulContact = "1970-01-01 00:00:00";
+                        URLbyDHCPIface = "";
+                        PeriodicInformEnable = no;
+                        PeriodicInformInterval = 0;
+                        PeriodicInformTime = "1970-01-01 00:00:00";
+                        UpgradesManaged = no;
+                        ACSInitiationEnable = yes;
+                        ACSInitiationPorts = "8089+0";
+                        SessionTerminationWithEmptyPost = no;
+                        ConnectionRequestUsername = "";
+                        ConnectionRequestPassword = "";
+                        dnsprefer = tr069dnsprefer_ipv4;
+                        CRSecurityEnable = no;
+                        CRSecurityDNSUpdateInterval = 86400;
+                        AllowedAccessMedium = tr069_medium_all;
+                }
+        }
+        FirmwareDownload {
+                enabled = yes;
+                enabled_converted = no;
+                upload_enabled = no;
+                valid = no;
+                wifi_env_permission = wifi_env_permission_none;
+                suppress_notify = no;
+                status = 0;
+                StartTime = "1970-01-01 00:00:00";
+                CompleteTime = "1970-01-01 00:00:00";
+                method = Download_Method_DL;
+                do_predownload_check = yes;
+        }
+        RebootRequest = no;
+        guimode = guimode_visible;
+        tr069cookie = "";
+        lab {
+                Enable = yes;
+                URLAlreadyContacted = yes;
+                PeriodicInformInterval = 77048;
+                Features = 65535;
+                CRUsername = "$$$$GYGR6PVIXMIU3X6UJ6YMIHENQB1V6SZ3WNVUS534DY45P2R61U2L3TMM3FLCAEQXC5YLMGKWQQNJKAYA";
+                CRPassword = "$$$$HU41D3H4ONIBO1ZTO3S4NWZBZ3EE1PW5QCL1OPGN2IYVMVJM42XYD6BJUUSSA24Z1YIGPMQ4DKPPQAYA";
+                CompressionMethod = http_compression_method_gzip;
+                AuthMethod = auth_basic;
+                DDNS {
+                        enabled = no;
+                }
+        }
+}
+
+
+// EOF
+
+**** END OF FILE ****
+**** CFGFILE:tr369.cfg
+/*
+ * /var/tmp.cfg
+ * Thu Jan  1 01:10:12 1970
+ */
+
+meta { encoding = "utf-8"; }
+
+tr369cfg {
+        version = 3;
+        enable = yes;
+        isp_access_allowed = yes;
+        controllers {
+                enable = no;
+                uid = 10;
+                endpoint_id = "pen:872:myfritz-usp";
+                prov_code = "";
+                mtp = tr369_mtp_ws;
+                host = "connect.myfritz.net";
+                port = 443;
+                conn_retry_interval_multiplier = 2500;
+                conn_retry_initial_interval = 60;
+                path = "/fritzos/usp/v1/[[BOX_ID]]";
+                username = "";
+                password = "";
+                ws_keepalive_interval = 120;
+                mqtt_client_id = "";
+                mqtt_controller_topic = "";
+                mqtt_response_topic = "";
+                tls {
+                        enable = yes;
+                        verify_server = yes;
+                        trusted_ca_file = "/etc/avm_root_ca.pem";
+                }
+                access_mask = 79;
+                feature_flags = 1;
+                restricted_methods = 11;
+                ui_access = tr369_ui_access_none;
+                source = tr369_controller_source_config;
+                periodic_notif_interval = 0;
+                periodic_notif_time = "1970-01-01 00:00:00";
+                onboarded = no;
+        }
+}
+
+
+// EOF
+
+**** END OF FILE ****
+**** B64FILE:fx_cg
+PD94bWwKdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0idXRmLTgiPjxjYWxsbG9nIG5leHRpZD0iMSIgYWN0
+aXZlPSIxIgpsYXN0c2F2ZT0iMTc1Mjg5Mzg4NyIgZmlyc3RzYXZlPSIxNTgxNjU1NTEwIiAvPgo=
+**** END OF FILE ****
+**** B64FILE:fx_conf
+U1YAAwAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAABVAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAEBAQEBAQEAAQEBAQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAQAAAAAAAAAAAAAAAAAAAAAAAP//////////////////////////////////////////
+//////////////////////////////////////////////////////////////////////////8wMDAw
+EAAAABAAAAAQAAAAEAAAAAIAAAACAAAAAgAAAAIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAYAAAAGAAAABgAAAAYAAAABAAAAAQAAAAEAAAABAAAA////////////////AAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAADEA////AAAAAAEBAQH/////////////////////////////
+////////////////////////AP8BAQEB////////////////////////////////////////////////
+////////////////////////////////////////////////////////////////////////////////
+////////////////////////////////////////////AAAAAQEBAQEBAQEB////////////////////
+////////////////////////////////////////////////////////////////////////////////
+////////////////////////////////////////////////////////////////////////////////
+////////////////////////////////////////////////////////////////////////////////
+////////////////////////////////////////////////////////////////////////////////
+////////////////////////////////////////////////////////////////////////////////
+/////////////////////wAAAABNMTEwKjExMCMxMTIqMTEyIzExNioxMTYjMTE4KjExOCMwMCojMCo0
+OSMqNDk4OSMwKjQ5Izg5IzEjMCMwIzQ5IzEjMDAjMCMxdW5kMSP/////////////////////////////
+////////////////////////////////////////////////////////////////////////////////
+////////////////////////////////////////////////////////////////////////////////
+////////////////////////////////////////////////TTExMCoxMTAjMTEyKjExMiMxMTYqMTE2
+IzExOCoxMTgjMDAqIzAqNDkjKjQ5ODkjMCo0OSM4OSMxIzAjMCM0OSMxIzAwIzAjMXVuZDEj////////
+////////////////////////////////////////////////////////////////////////////////
+////////////////////////////////////////////////////////////////////////////////
+/////////////////////////////////////////////////////////////////////00xMTAqMTEw
+IzExMioxMTIjMTE2KjExNiMxMTgqMTE4IzAwKiMwKjQ5Iyo0OTg5IzAqNDkjODkjMSMwIzAjNDkjMSMw
+MCMwIzF1bmQxI///////////////////////////////////////////////////////////////////
+////////////////////////////////////////////////////////////////////////////////
+////////////////////////////////////////////////////////////////////////////////
+//////////8hMDAqIyMqIyM4OSMwIzAjMCM0OSMwIzAwIzAjb3RoZXIj////////////////////////
+////////////////////////////////////////////////////////////////////////////////
+////////////////////////////////////////////////////////////////////////////////
+////////////////////////////////////////////////////////////////////////////////
+////////////////////////////////ITAwKiMjKiMjODkjMCMwIzAjNDkjMCMwMCMwI290aGVyI///
+////////////////////////////////////////////////////////////////////////////////
+////////////////////////////////////////////////////////////////////////////////
+////////////////////////////////////////////////////////////////////////////////
+/////////////////////////////////////////////////////yEwMCojIyojIzg5IzAjMCMwIzQ5
+IzAjMDAjMCNvdGhlciP/////////////////////////////////////////////////////////////
+////////////////////////////////////////////////////////////////////////////////
+////////////////////////////////////////////////////////////////////////////////
+//////////////////////////////////////////////////////////////////////////8hMDAq
+IyMqIyM4OSMwIzAjMCM0OSMwIzAwIzAjb3RoZXIj////////////////////////////////////////
+////////////////////////////////////////////////////////////////////////////////
+////////////////////////////////////////////////////////////////////////////////
+////////////////////////////////////////////////////////////////////////////////
+////////////////ITAwKiMjKiMjODkjMCMwIzAjNDkjMCMwMCMwI290aGVyI///////////////////
+////////////////////////////////////////////////////////////////////////////////
+////////////////////////////////////////////////////////////////////////////////
+////////////////////////////////////////////////////////////////////////////////
+/////////////////////////////////////yEwMCojIyojIzg5IzAjMCMwIzQ5IzAjMDAjMCNvdGhl
+ciP/////////////////////////////////////////////////////////////////////////////
+////////////////////////////////////////////////////////////////////////////////
+////////////////////////////////////////////////////////////////////////////////
+//////////////////////////////////////////////////////////8hMDAqIyMqIyM4OSMwIzAj
+MCM0OSMwIzAwIzAjb3RoZXIj////////////////////////////////////////////////////////
+////////////////////////////////////////////////////////////////////////////////
+////////////////////////////////////////////////////////////////////////////////
+////////////////////////////////////////////////////////////////////////////////
+ITAwKiMjKiMjODkjMCMwIzAjNDkjMCMwMCMwI290aGVyI///////////////////////////////////
+////////////////////////////////////////////////////////////////////////////////
+////////////////////////////////////////////////////////////////////////////////
+////////////////////////////////////////////////////////////////////////////////
+/////////////////////yEwMCojIyojIzg5IzAjMCMwIzQ5IzAjMDAjMCNvdGhlciP/////////////
+////////////////////////////////////////////////////////////////////////////////
+////////////////////////////////////////////////////////////////////////////////
+////////////////////////////////////////////////////////////////////////////////
+//////////////////////////////////////////8hMDAqIyMqIyM4OSMwIzAjMCM0OSMwIzAwIzAj
+b3RoZXIj////////////////////////////////////////////////////////////////////////
+////////////////////////////////////////////////////////////////////////////////
+////////////////////////////////////////////////////////////////////////////////
+////////////////////////////////////////////////////////////////ITAwKiMjKiMjODkj
+MCMwIzAjNDkjMCMwMCMwI290aGVyI///////////////////////////////////////////////////
+////////////////////////////////////////////////////////////////////////////////
+////////////////////////////////////////////////////////////////////////////////
+////////////////////////////////////////////////////////////////////////////////
+/////yEwMCojIyojIzg5IzAjMCMwIzQ5IzAjMDAjMCNvdGhlciP/////////////////////////////
+////////////////////////////////////////////////////////////////////////////////
+////////////////////////////////////////////////////////////////////////////////
+////////////////////////////////////////////////////////////////////////////////
+//////////////////////////8hMDAqIyMqIyM4OSMwIzAjMCM0OSMwIzAwIzAjb3RoZXIj////////
+////////////////////////////////////////////////////////////////////////////////
+////////////////////////////////////////////////////////////////////////////////
+////////////////////////////////////////////////////////////////////////////////
+////////////////////////////////////////////////ITAwKiMjKiMjODkjMCMwIzAjNDkjMCMw
+MCMwI290aGVyI///////////////////////////////////////////////////////////////////
+////////////////////////////////////////////////////////////////////////////////
+////////////////////////////////////////////////////////////////////////////////
+/////////////////////////////////////////////////////////////////////yEwMCojIyoj
+Izg5IzAjMCMwIzQ5IzAjMDAjMCNvdGhlciP/////////////////////////////////////////////
+////////////////////////////////////////////////////////////////////////////////
+////////////////////////////////////////////////////////////////////////////////
+////////////////////////////////////////////////////////////////////////////////
+//////////8hMDAqIyMqIyM4OSMwIzAjMCM0OSMwIzAwIzAjb3RoZXIj////////////////////////
+////////////////////////////////////////////////////////////////////////////////
+////////////////////////////////////////////////////////////////////////////////
+////////////////////////////////////////////////////////////////////////////////
+////////////////////////////////ITAwKiMjKiMjODkjMCMwIzAjNDkjMCMwMCMwI290aGVyI///
+////////////////////////////////////////////////////////////////////////////////
+////////////////////////////////////////////////////////////////////////////////
+////////////////////////////////////////////////////////////////////////////////
+/////////////////////////////////////////////////////wAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+MjM3OTU2NzMAAAAAAAAAAAAAAAAAMjM3OTY2NjYAAAAAAAAAAAAAAAAANTQzMTg3MjIAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAABTSVAwAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA4MDAqIzAqNDkjKjQ5ODkjMCo0OSMwKjAjMCow
+MDQ5Izg5IzEjMCMwIzQ5IzEjMDAjMCNvdGhlciP/////////////////////////////////////////
+////////////////////////////////////////////////////////////////////////////////
+////////////////////////////////////////////////////////////////////////////////
+////////////////////////////////////////////////////////////////////////////////
+////AQH///////8AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAD/////////////////////////////////////////////////////////////////
+////////////////////////////////////////////////////////////////////////////////
+////////////////////////////////////////////////////////////////////////////////
+////////////////////////////////////////////////////////////////////////////////
+////////////////////////////////////////////////////////////////////////////////
+////////////////////////////////////////////////////////////////////////////////
+////////////////////////////////////////////////////////////////////////////////
+////////////////////////////////////////////////////////////////////////////////
+////////////////////////////////////////////////////////////////////////////////
+////////////////////////////////////////////////////////////////////////////////
+////////////////////////////////////////////////////////////////////////////////
+////////////////////////////////////////////////////////////////////////////////
+////////////////////////////////////////////////////////////////////////////////
+////////////////////////////////////////////////////////////////////////////////
+////////////////////////////////////////////////////////////////////////////////
+////////////////////////////////////////////////////////////////////////////////
+////////////////////////////////////////////////////////////////////////////////
+////////////////////////////////////////////////////////////////////////////////
+////////////////////////////////////////////////////////////////////////////////
+////////////////////////////////////////////////////////////////////////////////
+////////////////////////////////////////////////////////////////////////////////
+////////////////////////////////////////////////////////////////////////////////
+////////////////////////////////////////////////////////////////////////////////
+////////////////////////////////////////////////////////////////////////////////
+////////////////////////////////////////////////////////////////////////////////
+////////////////////////////////////////////////////////////////////////////////
+////////////////////////////////////////////////////////////////////////////////
+////////////////////////////////////////////////////////////////////////////////
+////////////////////////////////////////////////////////////////////////////////
+////////////////////////////////////////////////////////////////////////////////
+////////////////////////////////////////////////////////////////////////////////
+////////////////////////////////////////////////////////////////////////////////
+////////////////////////////////////////////////////////////////////////////////
+////////////////////////////////////////////////////////////////////////////////
+////////////////////////////////////////////////////////////////////////////////
+////////////////////////////////////////////////////////////////////////////////
+////////////////////////////////////////////////////////////////////////////////
+////////////////////////////////////////////////////////////////////////////////
+////////////////////////////////////////////////////////////////////////////////
+////////////////////////////////////////////////////////////////////////////////
+////////////////////////////////////////////////////////////////////////////////
+////////////////////////////////////////////////////////////////////////////////
+////////////////////////////////////////////////////////////////////////////////
+////////////////////////////////////////////////////////////////////////////////
+////////////////////////////////////////////////////////////////////////////////
+////////////////////////////////////////////////////////////////////////////////
+////////////////////////////////////////////////////////////////////////////////
+////////////////////////////////////////////////////////////////////////////////
+////////////////////////////////////////////////////////////////////////////////
+////////////////////////////////////////////////////////////////////////////////
+////////////////////////////////////////////////////////////////////////////////
+////////////////////////////////////////////////////////////////////////////////
+////////////////////////////////////////////////////////////////////////////////
+////////////////////////////////////////////////////////////////////////////////
+////////////////////////////////////////////////////////////////////////////////
+////////////////////////////////////////////////////////////////////////////////
+////////////////////////////////////////////////////////////////////////////////
+//////////////////8A//////////8AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAD//////wD//////////////////////////wAAAAAAAAAA
+AAAEBAQEBAQEBAQEAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAA//////////////////////////////////////////8tMDAqKyMqIzAqMDA0OSMw
+Kis0OSM4OSMwIzAjMCM0OSMwIzAwIzAjb3RoZXIj////////////////////////////////////////
+////////////////////////////////////////////////////////////////////////////////
+////////////////////////////////////////////////////////////////////////////////
+////////////////////////////////////////////////////////////////////////////////
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAP//////////////////////////////////////////////////
+//////////////////////////////////////8AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAD/AAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA/////w==
+**** END OF FILE ****
+**** B64FILE:fx_lcr
+AwAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA8PDw8PDw8PDw8PDw
+8PDw8PDw8PDw8PDw8PDw8PDw8PDw8PDw8PDw8PDw8PDw8PDw8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx
+8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8vLy8vLy8vLy8vLy8vLy8vLy8vLy8vLy8vLy8vLy8vLy8vLy
+8vLy8vLy8vLy8vLy8/Pz8/Pz8/Pz8/Pz8/Pz8/Pz8/Pz8/Pz8/Pz8/Pz8/Pz8/Pz8/Pz8/Pz8/Pz8/Pz
+9PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09fX19fX19fX19fX1
+9fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19vb29vb29vb29vb29vb29vb29vb29vb2
+9vb29vb29vb29vb29vb29vb29vb29vb29/f39/f39/f39/f39/f39/f39/f39/f39/f39/f39/f39/f3
+9/f39/f39/f39/f3+Pj4+Pj4+Pj4+Pj4+Pj4+Pj4+Pj4+Pj4+Pj4+Pj4+Pj4+Pj4+Pj4+Pj4+Pj4+Pj4
++fn5+fn5+fn5+fn5+fn5+fn5+fn5+fn5+fn5+fn5+fn5+fn5+fn5+fn5+fn5+fn5AgICAgICAgICAgIC
+AgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQE
+BAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBgYGBgYGBgYGBgYGBgYGBgYGBgYGBgYGBgYGBgYGBgYGBgYG
+BgYGBgYGBgYGBgYGCAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgI
+CgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKDAwMDAwMDAwMDAwM
+DAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDg4ODg4ODg4ODg4ODg4ODg4ODg4ODg4O
+Dg4ODg4ODg4ODg4ODg4ODg4ODg4ODg4OEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQ
+EBAQEBAQEBAQEBAQEhISEhISEhISEhISEhISEhISEhISEhISEhISEhISEhISEhISEhISEhISEhISEhIS
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA+vr6+vr6+vr6+vr6+vr6+vr6+vr6+vr6+vr6+vr6+vr6+vr6
++vr6+vr6+vr6+vr6////////////////////////////////////////////////////////////////
+**** END OF FILE ****
+**** B64FILE:telefon_misc
+AAAAAAAAAAAAAAAAAAAAAAAAAAAEZPO1DLPAvtBS87U8AAAAgHPttQAAAAAAsOm1AQAAAAAAAAAAsu21
+vCP0tQCy7bUAAAAADLPAvqgn9LUAAAAA/sjrTqa+AAAAAAAAQEKmvgoAAAAgAwDuD/9GzZqby//+yOtO
+WPS9tdCzwL5ws8C+CL3AviA907X4vMC+AL3AvmQ3yrb9//9/AAAAALUAAAAgAwDuD0a6AJqby//+yOtR
+WCa3tgAAAACotcC+sLPAvgAAAAAAAAAAxLzAvsy8wL60vMC+vLzAvuC8wL7wvMC++LzAvgC9wL4IvcC+
+AAAAAAAAAAAwvcC+AAAAAAAAAAAAAAAAHL3AvgAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAACgQAA
+AAAAeAAAAAMwAAAA0LXAvgsAAADRSLum6dn/hXdTp4IGAAAAvqa+piADAO4P/0bNmpvL//7I604BAAAA
+LgAAAGqifbYAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAACQ9Pu2EAAAAAAAAADbBbe2
+pLTAvgAAAAAQAAAAAAAAAKa0wL4BAAAAAgAAAKi1wL7UH322CPOBtgAAAAAQAAAAAAAAABAAAAA0uMC+
+AAAAANzce7YKAAAACPOBtshe/LaktMC+AAAAADY5ALYAAAAACPOBtshe/La8tMC+AAAAAJD0+7YQAAAA
+AAAAAAAAAAAktcC+AAAAABAAAAAAAAAAJbXAvgAAAACQ9Pu2CgAAAAAAAAAI84G2TLXAvgAAAAAKAAAA
+AAAAAE21wL4AAAAABQAAAFC2wL7UH322CPOBtgAAAAAKAAAAAAAAAAoAAADMuMC+AAAAANzce7a1gs+1
+CPOBtshe/LZMtcC+pRq3tjAANQCIt8C+WCa3tgAAAACgt8C+qLXAvgAAAACAZa21CPOBtui1wL6c0Hu2
+ILjAvlgmt7YBAAAALbbAvjC2wL7IXvy2MLjAvtsFt7YBAAAARbbAvki2wL7IXvy2OQAAADkAAACgt8C+
+EQAAAP3//38AAAAAtQAAADUAAAC4t8C+7wn6gv3//39YJre2AAAAACC4wL4otsC+AAAAADAbzrUI84G2
+aLbAvu8J+oKguMC+2wW3tgAAAABIuMC+ULbAvgAAAACAwOm1CPOBtpC2wL6c0Hu2wLjAvtsFt7YBAAAA
+1bbAvti2wL7IXvy2/f//fwAAAAC2AAAAAQCAtpD0+7ZkvXu2MAAAADAAAABIuMC+CwAAAP7//38AAAAA
+tgAAAAAAAAAAAAAAAAAAAAAAAACMzHu2aqJ9tgEAAAAuAAAAaqJ9tgAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAP7///8Iqq61zLjAvtsFt7YEAAAAAAAAAAUAAAD///9/AQAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAACAAAAAMAAAAAAAAA
+AAAAAAAAAADvCfqC/3/ttai3wL7fOre2VLnAvgMAAAABAAAA8LjAvu8J+oIAAAAAmp6AtvC4wL4gAAAA
+AAAAAO8J+oIEAAAAKLjAvqQat7bwt8C+AAAAAO8J+oIo+L21pILPtUgmt7YIuMC+AgAAAKCsrrUA4Pu2
+tAW3tkIEAAAJAAAA0FK4ttBlrbVCBAAA7GmytrWCz7W1gs+1tYLPtaSCz7UAAAAAkoLPtbQFt7YAAAAA
+koLPtTijuLYKAAAAtAW3tkIEAAAJAAAA0FK4ttBlrbWQgva27wn6gjijuLZkGA+2SCa3toi4wL5kGA+2
+AAAAADAbzrWcG861gGX3tu8J+oKlAAC2pJXQtdEFt7awuMC+pJXQtQAAAACAwOm1iMDptVB+9rYQ4Xu2
+pQAAtv3///+kldC1r5XQta+V0LWvldC1BLzBtYA2tLYCAAAAAL7BtYDg+7b/////CgAAAMwgfbYBAAAA
+zGDPtcy4wL4AAAAAAQAAAAAAAAAAvMG1FLzBtVB99rbcHX22CPOBtsy4wL4AAAAAFLzBtRS8wbVs0W22
+zGDPtZAetLYQUbi2zmDPtYAKt7VY9rO2gAq3tQCAq7UGAAAA7wn6ggAAAADIUbW2gAq3tSK2AgD/AwAA
+jE+2toAKt7UAAAAAAAAAAFB99rYAAAAAALzBtRS8wbXo/rO2gAq3tQCAq7UGAAAA7wn6ggAAAADIUbW2
+kHn2tiK2AgD/AwAAjE+2tgAAAADo/Xm2uOuutQAQAAC46661AJCrtS8AAACYn3u2uOuuteS+gba46661
+0KZ7trjrrrWkEny2iGjBtYxdsrZ0DXy2AAAAAAAAAAAAAAAAAAAAAAAAAAD/7661uOuutRgyt7WMXbK2
+SO+utdC5wL4AAAAAIgAAAIAAAAAcYbK2dzm3tsgAAAAAAAAAAAAAAAAAAAAAAAAA/w+3tYAKt7V3Obe2
+yAAAANgOt7UQusC+AAAAACIAAACAAAAAHGGytsgAAABoyYG2dzm3tsgAAAAAAAAAAAAAAAAAAAAAAAAA
+OKO4toAKt7V3Obe2yAAAAAAAAABodbK2OKO4tu8J+oLvCfqCgAq3tdB49rakUba2AAAAAIAKt7WoRdK1
+YA+0ti2kErY8bbi2L3Zhci90bXAvbmVpZ2hfY3RsbWdyLmNmZwAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAUnVuZHJ1ZgAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAP8AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAE5VTEwAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AE5VTEwAAAAAAAAAAAAAAAAAAAAAAE5VTEwAAAAAAAAAAAAAAAAAAAAAAE5VTEwAAAAAAAAAAAAAAAAA
+AAAAAE5VTEwAAAAAAAAAAAAAAAAAAAAAAE5VTEwAAAAAAAAAAAAAAAAAAAAAAE5VTEwAAAAAAAAAAAAA
+AAAAAAAAAE5VTEwAAAAAAAAAAAAAAAAAAAAAAE5VTEwAAAAAAAAAAAAAAAAAAAAAAE5VTEwAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAEAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAADgAAAAAAAADWEgAAAQAAAAAQCrZmY19jb25maWcA
+RURJVU09Q0FCTEU7AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAD6+vr6+vr6+vr6+vr6+vr6+vr6+vr/
+**** END OF FILE ****
+**** B64FILE:phonebook
+PD94bWwKdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0idXRmLTgiPjxwaG9uZWJvb2s+PGNvbnRhY3Q+PGNh
+dGVnb3J5IC8+PHBlcnNvbj48cmVhbE5hbWU+QXVza3VuZnQgMTE4MzM8L3JlYWxOYW1lPjwvcGVyc29u
+Pjx0ZWxlcGhvbnkKbmlkPSIxIj48bnVtYmVyIHByaW89IjEiIHR5cGU9IndvcmsiIGlkPSIwIj4xMTgz
+MzwvbnVtYmVyPjwvdGVsZXBob255PjxzZXJ2aWNlcyAvPjxzZXR1cCAvPjx1bmlxdWVpZD4wPC91bmlx
+dWVpZD48L2NvbnRhY3Q+PGNvbnRhY3Q+PGNhdGVnb3J5IC8+PHBlcnNvbj48cmVhbE5hbWU+QVZNIEFu
+c2FnZSAoSEQpPC9yZWFsTmFtZT48L3BlcnNvbj48dGVsZXBob255Cm5pZD0iMSI+PG51bWJlciBwcmlv
+PSIxIiB0eXBlPSJ3b3JrIiBxdWlja2RpYWw9Ijk5IiBpZD0iMCI+NTAwQGhkLXRlbGVmb25pZS5hdm0u
+ZGU8L251bWJlcj48L3RlbGVwaG9ueT48c2VydmljZXMgLz48c2V0dXAgLz48dW5pcXVlaWQ+MTwvdW5p
+cXVlaWQ+PC9jb250YWN0Pjxjb250YWN0PjxjYXRlZ29yeSAvPjxwZXJzb24+PHJlYWxOYW1lPkhELU11
+c2lrPC9yZWFsTmFtZT48L3BlcnNvbj48dGVsZXBob255Cm5pZD0iMSI+PG51bWJlciBwcmlvPSIxIiB0
+eXBlPSJob21lIiBxdWlja2RpYWw9Ijk3IiBpZD0iMCI+MjAwQGhkLXRlbGVmb25pZS5hdm0uZGU8L251
+bWJlcj48L3RlbGVwaG9ueT48c2VydmljZXMgLz48c2V0dXAgLz48dW5pcXVlaWQ+MjwvdW5pcXVlaWQ+
+PC9jb250YWN0Pjxjb250YWN0PjxjYXRlZ29yeSAvPjxwZXJzb24+PHJlYWxOYW1lPkhELVNwcmFjaGU8
+L3JlYWxOYW1lPjwvcGVyc29uPjx0ZWxlcGhvbnkKbmlkPSIxIj48bnVtYmVyIHByaW89IjEiIHR5cGU9
+ImhvbWUiIHF1aWNrZGlhbD0iOTgiIGlkPSIwIj4xMDBAaGQtdGVsZWZvbmllLmF2bS5kZTwvbnVtYmVy
+PjwvdGVsZXBob255PjxzZXJ2aWNlcyAvPjxzZXR1cCAvPjx1bmlxdWVpZD4zPC91bmlxdWVpZD48L2Nv
+bnRhY3Q+PC9waG9uZWJvb2s+PGZlYXR1cmVmbGFncz45PC9mZWF0dXJlZmxhZ3M+PHBob25lYm9vawpv
+d25lcj0iMjU1Ij48Y29udGFjdD48Y2F0ZWdvcnkgLz48cGVyc29uPjxyZWFsTmFtZT5BbGxlIChSdW5k
+cnVmKTwvcmVhbE5hbWU+PC9wZXJzb24+PHRlbGVwaG9ueQpuaWQ9IjEiPjxudW1iZXIgdHlwZT0iaW50
+ZXJuIiBwcmlvPSIxIiBpZD0iMCI+OTwvbnVtYmVyPjwvdGVsZXBob255PjxzZXJ2aWNlcyAvPjxzZXR1
+cCAvPjxtb2RfdGltZT4zMjwvbW9kX3RpbWU+PHVuaXF1ZWlkPjQ8L3VuaXF1ZWlkPjwvY29udGFjdD48
+Y29udGFjdD48Y2F0ZWdvcnkgLz48cGVyc29uPjxyZWFsTmFtZT5BbnJ1ZmJlYW50d29ydGVyPC9yZWFs
+TmFtZT48L3BlcnNvbj48dGVsZXBob255Cm5pZD0iMiI+PG51bWJlciB0eXBlPSJpbnRlcm4iIHByaW89
+IjEiIGlkPSIwIj42MDA8L251bWJlcj48bnVtYmVyCnR5cGU9Im1lbW8iIGlkPSIxIj42MDU8L251bWJl
+cj48L3RlbGVwaG9ueT48c2VydmljZXMgLz48c2V0dXAgLz48bW9kX3RpbWU+MzU8L21vZF90aW1lPjx1
+bmlxdWVpZD4xMDwvdW5pcXVlaWQ+PC9jb250YWN0Pjxjb250YWN0PjxjYXRlZ29yeSAvPjxwZXJzb24+
+PHJlYWxOYW1lPkRFQ1QgUnVuZHJ1ZjwvcmVhbE5hbWU+PC9wZXJzb24+PHRlbGVwaG9ueQpuaWQ9IjEi
+PjxudW1iZXIgcHJpbz0iMSIgaWQ9IjAiPjUwPC9udW1iZXI+PC90ZWxlcGhvbnk+PHNlcnZpY2VzIC8+
+PHNldHVwIC8+PG1vZF90aW1lPjMyPC9tb2RfdGltZT48dW5pcXVlaWQ+NTwvdW5pcXVlaWQ+PC9jb250
+YWN0Pjxjb250YWN0PjxjYXRlZ29yeSAvPjxwZXJzb24+PHJlYWxOYW1lPlRlbGVmb248L3JlYWxOYW1l
+PjwvcGVyc29uPjx0ZWxlcGhvbnkKbmlkPSIxIj48bnVtYmVyIHR5cGU9ImludGVybiIgcHJpbz0iMSIg
+aWQ9IjAiPjE8L251bWJlcj48L3RlbGVwaG9ueT48c2VydmljZXMgLz48c2V0dXAgLz48bW9kX3RpbWU+
+MzI8L21vZF90aW1lPjx1bmlxdWVpZD45PC91bmlxdWVpZD48L2NvbnRhY3Q+PGNvbnRhY3Q+PGNhdGVn
+b3J5IC8+PHBlcnNvbj48cmVhbE5hbWU+V2Vja2VyIDE8L3JlYWxOYW1lPjwvcGVyc29uPjx0ZWxlcGhv
+bnkKbmlkPSIxIj48bnVtYmVyIHByaW89IjEiIGlkPSIwIj40MTwvbnVtYmVyPjwvdGVsZXBob255Pjxz
+ZXJ2aWNlcyAvPjxzZXR1cCAvPjxtb2RfdGltZT4zMjwvbW9kX3RpbWU+PHVuaXF1ZWlkPjY8L3VuaXF1
+ZWlkPjwvY29udGFjdD48Y29udGFjdD48Y2F0ZWdvcnkgLz48cGVyc29uPjxyZWFsTmFtZT5XZWNrZXIg
+MjwvcmVhbE5hbWU+PC9wZXJzb24+PHRlbGVwaG9ueQpuaWQ9IjEiPjxudW1iZXIgcHJpbz0iMSIgaWQ9
+IjAiPjQyPC9udW1iZXI+PC90ZWxlcGhvbnk+PHNlcnZpY2VzIC8+PHNldHVwIC8+PG1vZF90aW1lPjMy
+PC9tb2RfdGltZT48dW5pcXVlaWQ+NzwvdW5pcXVlaWQ+PC9jb250YWN0Pjxjb250YWN0PjxjYXRlZ29y
+eSAvPjxwZXJzb24+PHJlYWxOYW1lPldlY2tlciAzPC9yZWFsTmFtZT48L3BlcnNvbj48dGVsZXBob255
+Cm5pZD0iMSI+PG51bWJlciBwcmlvPSIxIiBpZD0iMCI+NDM8L251bWJlcj48L3RlbGVwaG9ueT48c2Vy
+dmljZXMgLz48c2V0dXAgLz48bW9kX3RpbWU+MzI8L21vZF90aW1lPjx1bmlxdWVpZD44PC91bmlxdWVp
+ZD48L2NvbnRhY3Q+PC9waG9uZWJvb2s+PHVuaXF1ZWlkPjExPC91bmlxdWVpZD48c2V0dGluZ3M+PHVz
+ZV9tZXNoPjA8L3VzZV9tZXNoPjwvc2V0dGluZ3M+Cg==
+**** END OF FILE ****
+**** B64FILE:calllog
+
+**** END OF FILE ****
+**** B64FILE:dect_misc
+
+**** END OF FILE ****
+**** B64FILE:fonctrl
+PD94bWwKdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0iaXNvLTg4NTktMSI+Cjx2ZXJzaW9uPjE8L3ZlcnNp
+b24+CjxwZXJzb24+CjxpZD4wPC9pZD4KPGRldmljZXR5cGU+MDwvZGV2aWNldHlwZT4KPGludGVybj48
+L2ludGVybj4KPGZuYW1lPjwvZm5hbWU+Cjxub3Jpbmc+Cjxub3JpbmdfbW9kZT42PC9ub3JpbmdfbW9k
+ZT4KPG5vcmluZ19zdGFydD4wPC9ub3Jpbmdfc3RhcnQ+Cjxub3JpbmdfZW5kPjA8L25vcmluZ19lbmQ+
+CjxmbGFncz4wPC9mbGFncz48L25vcmluZz4KPHJpbmdvbmFsbG1zbnM+MTwvcmluZ29uYWxsbXNucz4K
+PGNsaXI+MDwvY2xpcj4KPHdiX2VuYWJsZT4wPC93Yl9lbmFibGU+CjxjYWxsX3dhaXRpbmc+MDwvY2Fs
+bF93YWl0aW5nPgo8ZG9vcmxpbmU+MAo8ZG9vcmxpbmVfc3JjMD48L2Rvb3JsaW5lX3NyYzA+Cjxkb29y
+bGluZV9kZXN0MD48L2Rvb3JsaW5lX2Rlc3QwPgo8ZG9vcmxpbmVfc3JjMT48L2Rvb3JsaW5lX3NyYzE+
+Cjxkb29ybGluZV9kZXN0MT48L2Rvb3JsaW5lX2Rlc3QxPgo8ZG9vcmxpbmVfc3JjMj48L2Rvb3JsaW5l
+X3NyYzI+Cjxkb29ybGluZV9kZXN0Mj48L2Rvb3JsaW5lX2Rlc3QyPgo8ZG9vcmxpbmVfc3JjMz48L2Rv
+b3JsaW5lX3NyYzM+Cjxkb29ybGluZV9kZXN0Mz48L2Rvb3JsaW5lX2Rlc3QzPjwvZG9vcmxpbmU+Cjxs
+b3dnYWluPjA8L2xvd2dhaW4+CjxtZWRnYWluPjA8L21lZGdhaW4+CjxoaWdoZ2Fpbj4wPC9oaWdoZ2Fp
+bj4KPGludF9yaW5nX3RvbmU+MDwvaW50X3JpbmdfdG9uZT4KPHZpcF9yaW5nX3RvbmU+MDwvdmlwX3Jp
+bmdfdG9uZT4KPHJhZGlvX3JpbmdfaWQ+MDwvcmFkaW9fcmluZ19pZD4KPGFsYXJtMV9yaW5nX3RvbmU+
+MDwvYWxhcm0xX3JpbmdfdG9uZT4KPGFsYXJtMl9yaW5nX3RvbmU+MDwvYWxhcm0yX3JpbmdfdG9uZT4K
+PGFsYXJtM19yaW5nX3RvbmU+MDwvYWxhcm0zX3JpbmdfdG9uZT4KPHBob25lYm9va19ucj4wPC9waG9u
+ZWJvb2tfbnI+CjxjYXBhYmlsaXRpZXM+MDwvY2FwYWJpbGl0aWVzPgo8dGFtX21vbml0b3JfYml0bWFw
+PjA8L3RhbV9tb25pdG9yX2JpdG1hcD4KPHNlYXJjaF9zdHlsZT4xPC9zZWFyY2hfc3R5bGU+Cjxtc25s
+aXN0Pgo8bXNuIHR5cGU9IjAiIHJpbmd0b25lPSIwIiBub3Jpbmc9IjAiPjwvbXNuPgo8bXNuIHR5cGU9
+IjAiIHJpbmd0b25lPSIwIiBub3Jpbmc9IjAiPjwvbXNuPgo8bXNuIHR5cGU9IjAiIHJpbmd0b25lPSIw
+IiBub3Jpbmc9IjAiPjwvbXNuPgo8bXNuIHR5cGU9IjAiIHJpbmd0b25lPSIwIiBub3Jpbmc9IjAiPjwv
+bXNuPgo8bXNuIHR5cGU9IjAiIHJpbmd0b25lPSIwIiBub3Jpbmc9IjAiPjwvbXNuPgo8bXNuIHR5cGU9
+IjAiIHJpbmd0b25lPSIwIiBub3Jpbmc9IjAiPjwvbXNuPgo8bXNuIHR5cGU9IjAiIHJpbmd0b25lPSIw
+IiBub3Jpbmc9IjAiPjwvbXNuPgo8bXNuIHR5cGU9IjAiIHJpbmd0b25lPSIwIiBub3Jpbmc9IjAiPjwv
+bXNuPgo8bXNuIHR5cGU9IjAiIHJpbmd0b25lPSIwIiBub3Jpbmc9IjAiPjwvbXNuPgo8bXNuIHR5cGU9
+IjAiIHJpbmd0b25lPSIwIiBub3Jpbmc9IjAiPjwvbXNuPgo8L21zbmxpc3Q+CjxvdXRnb2luZ19jYWxs
+cyAvPgo8aW5jb21pbmdfY2FsbHMgLz4KPGFuc3dlcmVkX2NhbGxzIC8+CjwvcGVyc29uPgo=
+**** END OF FILE ****
+**** B64FILE:dect_eeprom
+AAAAAAAAAAAAAAAAAAABAAMTEsMYAAAAAAAAAAAAAAAAAAAHAAAAAAAAACsrKysrKwAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAD3AEoGAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAP//////////////////////////
+////////////////////////////////////////////////////////////////////////////////
+/////////////////////////////////////////////////////////////wAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==
+**** END OF FILE ****
+**** B64FILE:dmgr_handset_user
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAgMAAAAAAAQADAUoGBAAABQAFK0mdggAGAAIAAAcAELKaIoSy
+miKEySfNpsknzaY=
+**** END OF FILE ****
+**** B64FILE:tamconf
+AAAgyAAAAyQAAAAA/////////////////////////////////////////////////////wAAAAEAAAAA
+AAAAAAAAAAAAAAA8AAAABAAAAAQwMDAwAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAEAAAAAAAAA
+KqsCAAAAAAAAAAABAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAyQAAAAA////////////////////////////////
+/////////////////////wAAAAEAAAAAAAAAAAAAAAAAAAA8AAAABAAAAAQwMDAwAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAEAAAAAAAAAKu4mAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAyQAAAAA
+/////////////////////////////////////////////////////wAAAAEAAAAAAAAAAAAAAAAAAAA8
+AAAABAAAAAQwMDAwAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAEAAAAAAAAAKu7KAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAyQAAAAA////////////////////////////////////////////////
+/////wAAAAEAAAAAAAAAAAAAAAAAAAA8AAAABAAAAAQwMDAwAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAEAAAAAAAAAKu9+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAyQAAAAA////////////////
+/////////////////////////////////////wAAAAEAAAAAAAAAAAAAAAAAAAA8AAAABAAAAAQwMDAw
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAEAAAAAAAAAKvAiAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAyQAAAAA/////////////////////////////////////////////////////wAAAAEAAAAA
+AAAAAAAAAAAAAAA8AAAABAAAAAQwMDAwAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAEAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAyQAAAAA////////////////////////////////
+/////////////////////wAAAAEAAAAAAAAAAAAAAAAAAAA8AAAABAAAAAQwMDAwAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAEAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAyQAAAAA
+/////////////////////////////////////////////////////wAAAAEAAAAAAAAAAAAAAAAAAAA8
+AAAABAAAAAQwMDAwAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAEAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAyQAAAAA////////////////////////////////////////////////
+/////wAAAAEAAAAAAAAAAAAAAAAAAAA8AAAABAAAAAQwMDAwAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAEAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAyQAAAAA////////////////
+/////////////////////////////////////wAAAAEAAAAAAAAAAAAAAAAAAAA8AAAABAAAAAQwMDAw
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAEAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAC92YXIvZmxhc2gvdGFtY29uZgAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==
+**** END OF FILE ****
+**** CFGFILE:vpn.cfg
+/*
+ * /var/tmp.cfg
+ * Thu Jan  1 01:10:13 1970
+ */
+
+meta { encoding = "utf-8"; }
+
+vpncfg {
+        vpncfg_version = 4;
+        global {
+                wg_listen_port = 0;
+        }
+}
+
+
+// EOF
+
+**** END OF FILE ****
+**** CFGFILE:user.cfg
+/*
+ * /var/tmp.cfg
+ * Thu Jan  1 01:10:13 1970
+ */
+
+meta { encoding = "utf-8"; }
+
+usercfg {
+        active = yes;
+        filter_profiles {
+                id = 2;
+                budget_time_monday = 0;
+                budget_time_tuesday = 0;
+                budget_time_wednesday = 0;
+                budget_time_thursday = 0;
+                budget_time_friday = 0;
+                budget_time_saturday = 0;
+                budget_time_sunday = 0;
+                internet_policy_id = 0;
+                timeprofile_id = 0;
+                internet_ruleset_id = 0;
+                ruleset_id_without_timeprofile = 0;
+                internet_policy_budget_reached_id = 0;
+                bpjm_filter_enabled = yes;
+                url_blacklist_enabled = yes;
+                url_whitelist_enabled = no;
+                share_budget = no;
+                disallow_guest = no;
+        } {
+                id = 1;
+                budget_time_monday = 0;
+                budget_time_tuesday = 0;
+                budget_time_wednesday = 0;
+                budget_time_thursday = 0;
+                budget_time_friday = 0;
+                budget_time_saturday = 0;
+                budget_time_sunday = 0;
+                internet_policy_id = 0;
+                timeprofile_id = 0;
+                internet_ruleset_id = 0;
+                ruleset_id_without_timeprofile = 0;
+                internet_policy_budget_reached_id = 0;
+                bpjm_filter_enabled = no;
+                url_blacklist_enabled = no;
+                url_whitelist_enabled = no;
+                share_budget = no;
+                disallow_guest = no;
+        } {
+                id = 3;
+                budget_time_monday = 0;
+                budget_time_tuesday = 0;
+                budget_time_wednesday = 0;
+                budget_time_thursday = 0;
+                budget_time_friday = 0;
+                budget_time_saturday = 0;
+                budget_time_sunday = 0;
+                internet_policy_id = 0;
+                timeprofile_id = 0;
+                internet_ruleset_id = 0;
+                ruleset_id_without_timeprofile = 0;
+                internet_policy_budget_reached_id = 0;
+                bpjm_filter_enabled = no;
+                url_blacklist_enabled = no;
+                url_whitelist_enabled = no;
+                share_budget = no;
+                disallow_guest = no;
+        }
+        users2 {
+                type = internet_user_guest;
+                landeviceUID = 0;
+                ip = 0.0.0.0;
+                filter_profile_id = 2;
+                mac = 00:00:00:00:00:00;
+                ticket_valid_time = "1970-01-01 00:00:00";
+                tickets_in_advance = 0;
+                disallowed = no;
+        } {
+                type = internet_user_default;
+                landeviceUID = 0;
+                ip = 0.0.0.0;
+                filter_profile_id = 1;
+                mac = 00:00:00:00:00:00;
+                ticket_valid_time = "1970-01-01 00:00:00";
+                tickets_in_advance = 0;
+                disallowed = no;
+        }
+        parental_control_enabled = yes;
+        valid_tickets {
+                ticket = "547145";
+                assigned = no;
+        } {
+                ticket = "257066";
+                assigned = no;
+        } {
+                ticket = "751905";
+                assigned = no;
+        } {
+                ticket = "069789";
+                assigned = no;
+        } {
+                ticket = "841322";
+                assigned = no;
+        } {
+                ticket = "268765";
+                assigned = no;
+        } {
+                ticket = "663012";
+                assigned = no;
+        } {
+                ticket = "354188";
+                assigned = no;
+        } {
+                ticket = "330808";
+                assigned = no;
+        } {
+                ticket = "273519";
+                assigned = no;
+        }
+}
+
+
+// EOF
+
+**** END OF FILE ****
+**** CFGFILE:userstat.cfg
+/*
+ * /var/tmp.cfg
+ * Thu Jan  1 01:10:13 1970
+ */
+
+meta { encoding = "utf-8"; }
+
+userstatcfg {
+        users {
+                type = internet_user_default;
+                landeviceUID = 0;
+                ip = 0.0.0.0;
+                statistic {
+                        ts = 443902h;
+                        to {
+                                s = 0;
+                        }
+                        ye {
+                                s = 20280;
+                        }
+                        tw {
+                                s = 227760;
+                        }
+                        lw {
+                                s = 369360;
+                        }
+                        tm {
+                                s = 1174440;
+                        }
+                        lm {
+                                s = 1535640;
+                        }
+                        tt {
+                                s = 11939040;
+                        }
+                        ot = 1597981312s;
+                }
+        } {
+                type = internet_user_guest;
+                landeviceUID = 0;
+                ip = 0.0.0.0;
+                statistic {
+                        ts = 443902h;
+                        to {
+                                s = 0;
+                        }
+                        ye {
+                                s = 0;
+                        }
+                        tw {
+                                s = 0;
+                        }
+                        lw {
+                                s = 0;
+                        }
+                        tm {
+                                s = 0;
+                        }
+                        lm {
+                                s = 0;
+                        }
+                        tt {
+                                s = 0;
+                        }
+                        ot = 0w;
+                }
+        }
+}
+
+
+// EOF
+
+**** END OF FILE ****
+**** B64FILE:umts.cfg
+
+**** END OF FILE ****
+**** B64FILE:configd
+PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0idXRmLTgiPz48bGlzdD48ZW1haWw+PGRvbWFpbiBu
+YW1lPSJlbWFpbCI+PC9kb21haW4+PC9lbWFpbD48cnNzPjxkb21haW4gbmFtZT0icnNzIj48L2RvbWFp
+bj48L3Jzcz48d2VicmFkaW8+PGRvbWFpbiBuYW1lPSJ3ZWJyYWRpbyI+PC9kb21haW4+PC93ZWJyYWRp
+bz48cG9kY2FzdD48ZG9tYWluIG5hbWU9InBvZGNhc3QiPjwvZG9tYWluPjwvcG9kY2FzdD48bGl2ZV9p
+bWFnZT48ZG9tYWluIG5hbWU9ImxpdmVfaW1hZ2UiPjwvZG9tYWluPjwvbGl2ZV9pbWFnZT48VGFtVGlt
+ZXI+PGRvbWFpbiBuYW1lPSJUYW1UaW1lciI+PHJ1bGUgaWQ9IjAiIGVuYWJsZWQ9IjAiPjxpdGVtIGRh
+eT0iMSIgdGltZT0iMDAwMCIgYWN0aW9uPSIyIj48L2l0ZW0+PGl0ZW0gZGF5PSIzMSIgdGltZT0iMDgw
+MCIgYWN0aW9uPSIzIj48L2l0ZW0+PGl0ZW0gZGF5PSIzMSIgdGltZT0iMTgwMCIgYWN0aW9uPSIyIj48
+L2l0ZW0+PGl0ZW0gZGF5PSIzMiIgdGltZT0iMDAwMCIgYWN0aW9uPSIwIj48L2l0ZW0+PC9ydWxlPjxy
+dWxlIGlkPSIxIiBlbmFibGVkPSIwIj48aXRlbSBkYXk9IjEiIHRpbWU9IjAwMDAiIGFjdGlvbj0iMiI+
+PC9pdGVtPjxpdGVtIGRheT0iMzEiIHRpbWU9IjA4MDAiIGFjdGlvbj0iMyI+PC9pdGVtPjxpdGVtIGRh
+eT0iMzEiIHRpbWU9IjE4MDAiIGFjdGlvbj0iMiI+PC9pdGVtPjxpdGVtIGRheT0iMzIiIHRpbWU9IjAw
+MDAiIGFjdGlvbj0iMCI+PC9pdGVtPjwvcnVsZT48cnVsZSBpZD0iMiIgZW5hYmxlZD0iMCI+PGl0ZW0g
+ZGF5PSIxIiB0aW1lPSIwMDAwIiBhY3Rpb249IjIiPjwvaXRlbT48aXRlbSBkYXk9IjMxIiB0aW1lPSIw
+ODAwIiBhY3Rpb249IjMiPjwvaXRlbT48aXRlbSBkYXk9IjMxIiB0aW1lPSIxODAwIiBhY3Rpb249IjIi
+PjwvaXRlbT48aXRlbSBkYXk9IjMyIiB0aW1lPSIwMDAwIiBhY3Rpb249IjAiPjwvaXRlbT48L3J1bGU+
+PHJ1bGUgaWQ9IjMiIGVuYWJsZWQ9IjAiPjxpdGVtIGRheT0iMSIgdGltZT0iMDAwMCIgYWN0aW9uPSIy
+Ij48L2l0ZW0+PGl0ZW0gZGF5PSIzMSIgdGltZT0iMDgwMCIgYWN0aW9uPSIzIj48L2l0ZW0+PGl0ZW0g
+ZGF5PSIzMSIgdGltZT0iMTgwMCIgYWN0aW9uPSIyIj48L2l0ZW0+PGl0ZW0gZGF5PSIzMiIgdGltZT0i
+MDAwMCIgYWN0aW9uPSIwIj48L2l0ZW0+PC9ydWxlPjxydWxlIGlkPSI0IiBlbmFibGVkPSIwIj48aXRl
+bSBkYXk9IjEiIHRpbWU9IjAwMDAiIGFjdGlvbj0iMiI+PC9pdGVtPjxpdGVtIGRheT0iMzEiIHRpbWU9
+IjA4MDAiIGFjdGlvbj0iMyI+PC9pdGVtPjxpdGVtIGRheT0iMzEiIHRpbWU9IjE4MDAiIGFjdGlvbj0i
+MiI+PC9pdGVtPjxpdGVtIGRheT0iMzIiIHRpbWU9IjAwMDAiIGFjdGlvbj0iMCI+PC9pdGVtPjwvcnVs
+ZT48L2RvbWFpbj48L1RhbVRpbWVyPjxEaXZlcnNpb25UaW1lcj48ZG9tYWluIG5hbWU9IkRpdmVyc2lv
+blRpbWVyIj48cnVsZSBpZD0iMCIgZW5hYmxlZD0iMCI+PGl0ZW0gZGF5PSIzMSIgdGltZT0iMDgwMCIg
+YWN0aW9uPSIxIj48L2l0ZW0+PGl0ZW0gZGF5PSIzMSIgdGltZT0iMTgwMCIgYWN0aW9uPSIwIj48L2l0
+ZW0+PC9ydWxlPjwvZG9tYWluPjwvRGl2ZXJzaW9uVGltZXI+PEtpZHNUaW1lcj48ZG9tYWluIG5hbWU9
+IktpZHNUaW1lciI+PC9kb21haW4+PC9LaWRzVGltZXI+PFdMQU5UaW1lcj48ZG9tYWluIG5hbWU9IldM
+QU5UaW1lciI+PC9kb21haW4+PC9XTEFOVGltZXI+PC9saXN0Pjxjb25maWc+PGJ1aWxkX251bWJlciB2
+YWx1ZT0iMTE4MTAyIj48L2J1aWxkX251bWJlcj48L2NvbmZpZz4=
+**** END OF FILE ****
+**** CFGFILE:ahausr.cfg
+/*
+ * /var/tmp.cfg
+ * Thu Jan  1 01:10:13 1970
+ */
+
+meta { encoding = "utf-8"; }
+
+ahausrcfg {
+}
+
+
+// EOF
+
+**** END OF FILE ****
+**** B64FILE:aha.cfg
+PD94bWwgdmVyc2lvbj0iMS4wIj8+PGdsb2JhbAppZGVudD0iNiIgdmVyc2lvbj0iMSI+PGxvY2F0aW9u
+IGxhdGl0dWRlPSI1Mi41MjAwMDAiCmxvbmdpdHVkZT0iMTMuMzQwMDAwIiAvPjxkZWZhdWx0cyBjbzI9
+IjU1MCIgdGFyaWY9IjI1MDAiIC8+PGNhbHMgLz48L2dsb2JhbD4K
+**** END OF FILE ****
+**** B64FILE:ahastat.cfg
+
+**** END OF FILE ****
+**** B64FILE:ahadect.cfg
+
+**** END OF FILE ****
+**** B64FILE:ahanet.cfg
+BAEAAAAQAAAB/////////wH///8kIAIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAA=
+**** END OF FILE ****
+**** B64FILE:ahaglobal.cfg
+
+**** END OF FILE ****
+**** B64FILE:ahapushmail.cfg
+PHNlY3Rpb24gbmFtZT0iUHVzaG1haWwiPgoJPHZhcmlhYmxlIG5hbWU9InB1c2htYWlsX2xpc3QiPgoJ
+PC92YXJpYWJsZT4KPC9zZWN0aW9uPgo=
+**** END OF FILE ****
+**** CFGFILE:avmnexus.cfg
+/*
+ * /var/tmp.cfg
+ * Thu Jan  1 01:10:15 1970
+ */
+
+meta { encoding = "utf-8"; }
+
+avmnexuscfg {
+        role = avmnexus_role_slave;
+        master_address = 0.0.0.0;
+        election_done = no;
+        own_key =
+                  "Base64:LS0tLS1CRUdJTiBSU0EgUFJJVkFURSBLRVktLS0tLQpQcm9jLVR5cGU6IDQsRU5DUllQVEVECkRF
+Sy1JbmZvOiBBRVMtMTI4LUNCQywwOTVDNTU2RkFDMjYwNUU1ODI2OEIzMTAxRkM3MjU0OAoKQUJF
+RFlCQlZIRzdYdGFJR1puR2RDVHVFVXRVOTVtcFFla0RMZVppRWtsLzluT0hldVNhVFVJV2YrOUJr
+U2JVRQpnWEhzekFYZEpFMmdNUUdxSUhoZlBoQUtpR0p0YUZPWWVTRkFUZ1lUSkxlWVV2bjRRMU5I
+QnpPVkNsWVdITDRiCkxyRmEzU01zbmVBRzc2NWlxT2ZYeUpzNDJ5Yi8rdUVjbmlpSGJKYUZodGdJ
+WmtiVzZoWTdSdklGcEYvcFdQcFAKU0lVOWQwWXFzVnNhRUlUZGJJOWFibjRlMlRvV3EyOGFVb0FU
+VWR5eFhVS3pwVU1idnFtWUlrWkZQR3JRSHJxdgo4MWMyRnV6ZTFNVEhHK1JKZ1YzL0xudnJWMXNF
+dHdMRFk3YUIzdEthRmZOSERvZHpWS3hxY2tMMGVoRWNEU1BQCmxnUGZzMWdmM0RpZU9XTFJzWW4v
+Y1A2VU4vZzRKVmdQOXhQbVNxUmxoamUrTVgwc1I0YVZtVjVvRWU0SFl5eVoKbGhqWEJhbTRnOUxa
+VTlRYjRYdXZRZzB2TkRVOE42RndrNDk4cHJNZEVLMEdCRUFmUUQ1ekhCckZRbTlnUHNsMApNUmJk
+N1ZiSVVUZE85bWlrUGorRng4QTZjZnRpSm16MFpSYk5KU3dPSnh0b2pNT0o4aHFhV29KZmxjUWR3
+MDlhCnltWG13Y1U5aVJyZmpJSDZPekx0dDBwYTBOTzRGNGJ4RDRZdGJkSVZvc24yVkxDb2JCUGcr
+aEFxbjBTSU90VVEKRnlZc0wxU1o5a1MvemlZVS8zRTJpa3FaamVxdDBDWUlhbnlhTkNGbGFXT08y
+c2pxZVI0L3pDSEFmV1cvOExCeAp6ZUpySHlNZ3ppVVFQeWhvUTg2MVhLSE1wKy9UNmo3b29UbzND
+aTlMYkRaZEtYQXdKclBqZjUyTTRnYXJuMXprCm1DUTZIenlaMWc0cHZZN0RJaGxZUVFDelBaNnBj
+MGM2TkJUMnpjbEVkZFVWMHVqL01HajA1UU9qMmsrVXhLL28KTE1xZitXZDB6MEIxa1V3N0lSMmpv
+eVlSZnVHWHZqeFhyUU41c3RFcTRha1ZqTWxuMlVJb0VwdmhvRUI5c2Y3KwppbUZtUVZtY2FadzRm
+azBDa2xtd3FRb0t5c1N2bzUrcHhxVUpMVGxTdlhHK29iNW4yRVhpSXh5T3FvbHBRbnhmCmM3MlBs
+d3VTS3B6aXFjNlZHc2Q5MXQzYjZqcGVkVUZuRDFUR3NWMEN6d09tNXJNbXpLT211TVN6K3A2cWlR
+US8KUW5FMkpxdk0zTlg3NUFQK00yNVJoUkR2R0V1bElOczl3cUsza3p2MXpCNU15OG1HZ2dnK0FW
+djZwYUJSTHNqWApWMHhYcVBMSjkyM3N1ZHJOYUo3MDBhcWpHY3BPZHVUVE4wZ2JLaWJzR1ZKYmsy
+eGQycDhDeUN3NVYvOFJZYW1GCmRYSkhVNElXazl3Vy9jNFZPbStSNlZIeEVIR3J4RDQyUVBXV25t
+Qzgva2xkWnRPb1JabWJ1eEFPVjBRK0dpNE0KTU41TE9McktIbU44UmdldHNaN0UvUzJUVVU2TnlM
+SDMrL2NtQ3BBOHBRZHNhM1dRWGYyL2d0RW5lUDJ3NUtvcQpnNEVQa2l5dFhsMnEyQWFFcmkwNmhl
+OW5wd1UzUlIvNWJxczQxT29XOXpMdjEreG4vUU1vUkhwYktOeGc3S0x3CmM3UkIyM0ZtMHlia0FS
+VGNXOGRxTElGY2VlRjBldVA2bHEzZnI4WkJGdzhFNGg5WndsWGRlMlQ5eFpnWWl5V0QKSTJXUEZQ
+MkQyYmgva2orNEo2aHRVM2ZVSjNKQUJkYW9pa1JYL2xYT0orbEx0RE5sNzREVVpqbzdWUURkdDA0
+UApleVFhWE9tdm5RdjFBeFZTejZXbVdDSUhSSW5iQ3JWYzBpLzZwaEV0S3owMjRZQlpKaEl1MTE5
+MTdmcVBlaHI0CnIxejBrRnNFNmpENTZmSUdxN1lmZ0MvMnZTTzhydi9YQTZkYVQ1NFplM0RlZ0FL
+b1QwdDNobE9nTDN0UzVsbmoKM3lkUDY0elBGdUxUNzh5dVNudEczM3JXQnBXcDBCRnRURHVqKzda
+VEFCN1RONXcwZVBVZ3l1amduWGVmMEtrYQotLS0tLUVORCBSU0EgUFJJVkFURSBLRVktLS0tLQo=";
+        own_cert =
+                   "Base64:LS0tLS1CRUdJTiBDRVJUSUZJQ0FURS0tLS0tCk1JSURSVENDQWkyZ0F3SUJBZ0lKQUk5STkxZlRS
+Qm1vTUEwR0NTcUdTSWIzRFFFQkN3VUFNQ0F4SGpBY0JnTlYKQkFNVEZXRjJiVzVsZUhWekxUazRP
+V0pqWW1NNFpXSTFNVEFlRncwM01EQXhNREV3TURBd01qWmFGdzB6T0RBeApNVFl3TURBd01qWmFN
+Q0F4SGpBY0JnTlZCQU1URldGMmJXNWxlSFZ6TFRrNE9XSmpZbU00WldJMU1UQ0NBU0l3CkRRWUpL
+b1pJaHZjTkFRRUJCUUFEZ2dFUEFEQ0NBUW9DZ2dFQkFMTXk5cXJQZVIxdVRaS0xIaHZGZVNldDg3
+a0oKZDNmTUNBUTZjb0RhRm16VDlTSUE5K1NzQ1NaT3RiK2dITVFOT0E4b3I0TGtSNTVQZ2hHZE0x
+VXhvcjFXTnFiUwpPYjJmUUlHcTR1dE9GTGZ5NzFMOVJVNnZ4NjBodzZSNHZhdTFNcTJKZ3pqRmZB
+SWg4TXAvMXg4VjRCTHY5UTJPCk42TCtzK3F4S1BJdlY1Sys5MG1DaHlqZW1SRHgxMUU1aXVjTHYr
+b3dvdkVYSERnc2l1U0xpWGlxM3IyNEtodDIKSFRaVjc2dVFaaGpQbHJ4V2RtOGFlUER5cWdDQW9B
+UGozcFFubGI2c01tQXl2K2h2RTd1QnJVY2xoWG1IVStNRgpmQmJRWWpQenA0ZUs2K2VQODE0Q1JW
+aFJFMCtpVExYcG1yOHdnb3l0eFEvOEp5U2ZVWkNZQnAzQS9NVUNBd0VBCkFhT0JnVEIvTUIwR0Ex
+VWREZ1FXQkJTand6K1pFdGVjb25HbWVqdmZjdnc0QzJ2TWNqQlFCZ05WSFNNRVNUQkgKZ0JTand6
+K1pFdGVjb25HbWVqdmZjdnc0QzJ2TWNxRWtwQ0l3SURFZU1Cd0dBMVVFQXhNVllYWnRibVY0ZFhN
+dApPVGc1WW1OaVl6aGxZalV4Z2drQWowajNWOU5FR2Fnd0RBWURWUjBUQkFVd0F3RUIvekFOQmdr
+cWhraUc5dzBCCkFRc0ZBQU9DQVFFQWVEaENLOFZaUXJVcmd0UGhVdDFhb09aNk5nTUNvd2Jibk9N
+UDk1dWdQclFnejdoamk4akUKbmtUQVlJbVFFUVpmbFBWdDlOeitCbXk5ME16ZWRVNjdHbEI4RDIv
+OE5RRk13L1k4eWNTeU00UUxYN3F6RXFxbApxeW0rTUx0bGJLZDhkendwYWVENlV2MWdMcmU0Wjh3
+N1FBbks5R2lpcjhwVEg0eHd6WWR4YW13RFB4YXRLQTdyClhiNGk0c1FZQ00yMysvT1J5bFJoNk5t
+YXZqelUwdTVKZmFjNUcxbDE0TUduOUhSWjNKaVhxQXM0S2NGb08zWWEKWFRpYVFTUGZkNVhoYmV3
+eEFKa25mYXRJQ1FLK3R6eHVIbFBBSk5HdlV4bW1UcE16dEFWQkZsNXBXbWNyNC9PRgp5NjhScGky
+UWJtL0ZiMzRKWDduRnVWcitVMEU5MWZKRGVRPT0KLS0tLS1FTkQgQ0VSVElGSUNBVEUtLS0tLQo=";
+}
+
+
+// EOF
+
+**** END OF FILE ****
+**** END OF EXPORT 71CB28C8 ****
