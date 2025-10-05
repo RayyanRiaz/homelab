@@ -202,13 +202,11 @@ in
         dhcp-authoritative = true;
         log-dhcp = true;
       };
-
-      systemd.services.dnsmasq.requires = [ "network-online.target" ];
-      systemd.services.dnsmasq.after = [ "network-online.target" ];
-
     };
 
   };
 
+  systemd.services.dnsmasq.requires = [ "network-online.target" ];
+  systemd.services.dnsmasq.after = [ "network-online.target" ];
   virtualisation.docker.enable = lib.mkForce false;
 }
