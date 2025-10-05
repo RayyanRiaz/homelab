@@ -167,8 +167,6 @@ in
 
     dnsmasq = {
       enable = true;
-      after = [ "network-online.target" ];
-      wants = [ "network-online.target" ];
       # ask dnsmasq to bind to the VLAN interfaces and hand out ranges
       settings = {
         # domain-needed = true;
@@ -204,6 +202,10 @@ in
         dhcp-authoritative = true;
         log-dhcp = true;
       };
+
+      systemd.services.dnsmasq.requires = [ "network-online.target" ];
+      systemd.services.dnsmasq.after = [ "network-online.target" ];
+
     };
 
   };
