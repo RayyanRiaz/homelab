@@ -208,5 +208,14 @@ in
 
   systemd.services.dnsmasq.requires = [ "network-online.target" ];
   systemd.services.dnsmasq.after = [ "network-online.target" ];
+
+  systemd.network.wait-online = {
+    enable = true;
+    interfaces = [
+      wanInterface
+      lanInterface
+    ];
+  };
+
   virtualisation.docker.enable = lib.mkForce false;
 }
