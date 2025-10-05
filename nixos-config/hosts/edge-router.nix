@@ -1,6 +1,5 @@
 {
   config,
-  lib,
   pkgs,
   ...
 }:
@@ -8,17 +7,26 @@
 let
   wanInterface = "enp1s0";
   lanInterface = "enp2s0";
-  homeVlan = "${lanInterface}.10";
-  serverVlan = "${lanInterface}.20";
-  cameraVlan = "${lanInterface}.30";
+  homeVlan = {
+    name = "home";
+    id = 10;
+    interface = lanInterface;
+  };
+  serverVlan = {
+    name = "servers";
+    id = 20;
+    interface = lanInterface;
+  };
+  cameraVlan = {
+    name = "cameras";
+    id = 30;
+    interface = lanInterface;
+  };
 in
 {
   imports = [
     ../modules/common.nix
     ../modules/ssh.nix
-    # ../modules/system_cleanup.nix
-    ../modules/monitoring.nix
-
     ../users/rayyan
   ];
 
@@ -34,6 +42,7 @@ in
     vim
     git
     htop
+    btop
     mtr
     nmap
     tcpdump
@@ -43,18 +52,25 @@ in
     traceroute
     bmon
     lldpd
+    iproute2
+    wireguard-tools
   ];
-
-  programs.zsh.enable = true;
 
   powerManagement.cpuFreqGovernor = "performance";
   services.thermald.enable = true;
 
   networking = {
-    useDHCP = false;
-    useNetworkd = true;
-    dhcpcd.enable = false;
     enableIPv6 = true;
+
+    useDHCP = false;
+    # https://www.reddit.com/r/archlinux/comments/ge61lr/dhcpcd_vs_netword_preference_and_experience/
+    useNetworkd = true; # enable systemd-networkd (recommended for advanced network setups)
+    dhcpcd.enable = false; # disable dhcpcd if using systemd-networkd
+
+    # nameservers = [
+    #   "1.1.1.1"
+    #   "8.8.8.8"
+    # ];
 
     vlans = {
       home = {
@@ -72,24 +88,24 @@ in
     };
 
     interfaces = {
-      "${wanInterface}".useDHCP = true;
-      "${lanInterface}".useDHCP = false;
+      "${wanInterface}".useDHCP = true; # get IP from ISP
+      "${lanInterface}".useDHCP = false; # static IPs on VLANs below
 
-      "${homeVlan}".ipv4.addresses = [
+      "${homeVlan.name}".ipv4.addresses = [
         {
-          address = "192.168.10.1";
+          address = "192.168.${homeVlan.id}.1";
           prefixLength = 24;
         }
       ];
-      "${serverVlan}".ipv4.addresses = [
+      "${serverVlan.name}".ipv4.addresses = [
         {
-          address = "192.168.20.1";
+          address = "192.168.${serverVlan.id}.1";
           prefixLength = 24;
         }
       ];
-      "${cameraVlan}".ipv4.addresses = [
+      "${cameraVlan.name}".ipv4.addresses = [
         {
-          address = "192.168.30.1";
+          address = "192.168.${cameraVlan.id}.1";
           prefixLength = 24;
         }
       ];
@@ -99,99 +115,69 @@ in
       enable = true;
       externalInterface = wanInterface;
       internalInterfaces = [
-        homeVlan
-        serverVlan
-        cameraVlan
+        homeVlan.name
+        serverVlan.name
+        cameraVlan.name
       ];
-      enableIPv6 = false;
+      # enableIPv6 = false; # change if you want IPv6 NAT / routing
     };
 
     firewall = {
-      enable = true;
-      allowPing = true;
-      logRefusedConnections = true;
-      trustedInterfaces = [
-        homeVlan
-        serverVlan
-      ];
-
-      extraInputRules = ''
-        # Allow management from trusted VLANs
-        iifname { "${homeVlan}", "${serverVlan}" } tcp dport { 22, 80, 443, 9100, 19999 } accept
-        iifname { "${homeVlan}", "${serverVlan}" } udp dport { 53, 67, 123 } accept
-
-        # Cameras: DNS/DHCP/NTP only
-        iifname "${cameraVlan}" udp dport { 53, 67, 123 } accept
-        iifname "${cameraVlan}" tcp dport 53 accept
-
-        # Drop management attempts from WAN
-        iifname "${wanInterface}" tcp dport { 22, 9100, 19999 } drop
-        iifname "${wanInterface}" udp dport { 53, 67, 123 } drop
-      '';
-
-      extraForwardRules = ''
-        # Cameras cannot reach internet
-        iifname "${cameraVlan}" oifname "${wanInterface}" reject with icmpx type admin-prohibited;
-
-        # Cameras can talk to internal networks
-        iifname "${cameraVlan}" oifname "${homeVlan}" accept
-        iifname "${cameraVlan}" oifname "${serverVlan}" accept
-      '';
+      enable = false;
     };
   };
 
   boot.kernel.sysctl = {
+    # --- Kernel: enable forwarding ---
+    # allow the box to forward packets between interfaces
+    # also see https://francis.begyn.be/blog/nixos-home-router
     "net.ipv4.ip_forward" = 1;
     "net.ipv6.conf.all.forwarding" = 1;
 
-    # performance / backlog tuning
-    "net.core.netdev_max_backlog" = 4096;
-    "net.ipv4.tcp_max_syn_backlog" = 8192;
-    "net.ipv4.tcp_fin_timeout" = 15;
-    "net.ipv4.tcp_tw_reuse" = 1;
-    "net.netfilter.nf_conntrack_max" = 524288;
-    "net.netfilter.nf_conntrack_tcp_timeout_established" = 1800;
-    "net.core.rmem_max" = 16777216;
-    "net.core.wmem_max" = 16777216;
-    "net.ipv4.conf.all.rp_filter" = 0;
-    "net.ipv4.conf.default.rp_filter" = 0;
+    # # performance / backlog tuning
+    # "net.core.netdev_max_backlog" = 4096;
+    # "net.ipv4.tcp_max_syn_backlog" = 8192;
+    # "net.ipv4.tcp_fin_timeout" = 15;
+    # "net.ipv4.tcp_tw_reuse" = 1;
+    # "net.netfilter.nf_conntrack_max" = 524288;
+    # "net.netfilter.nf_conntrack_tcp_timeout_established" = 1800;
+    # "net.core.rmem_max" = 16777216;
+    # "net.core.wmem_max" = 16777216;
+    # "net.ipv4.conf.all.rp_filter" = 0;
+    # "net.ipv4.conf.default.rp_filter" = 0;
   };
 
-  # tune NIC buffers & offloads
-  systemd.services."nic-tune" = {
-    description = "NIC tuning for router performance";
-    wantedBy = [ "multi-user.target" ];
-    script = ''
-      for iface in ${wanInterface} ${lanInterface}; do
-        ethtool -K $iface gro off gso off tso off rx on tx on
-        ethtool -G $iface rx 4096 tx 4096
-      done
-    '';
-    serviceConfig.Type = "oneshot";
-  };
+  # # tune NIC buffers & offloads
+  # systemd.services."nic-tune" = {
+  #   description = "NIC tuning for router performance";
+  #   wantedBy = [ "multi-user.target" ];
+  #   script = ''
+  #     for iface in ${wanInterface.name} ${lanInterface.name}; do
+  #       ethtool -K $iface gro off gso off tso off rx on tx on
+  #       ethtool -G $iface rx 4096 tx 4096
+  #     done
+  #   '';
+  #   serviceConfig.Type = "oneshot";
+  # };
 
   services = {
-    chrony = {
-      enable = true;
-      enableNTS = true;
-      servers = [ "pool.ntp.org" ];
-    };
+    # chrony = {
+    #   enable = true;
+    #   enableNTS = true;
+    #   servers = [ "pool.ntp.org" ];
+    # };
 
     dnsmasq = {
       enable = true;
+      # ask dnsmasq to bind to the VLAN interfaces and hand out ranges
       settings = {
-        domain-needed = true;
-        bogus-priv = true;
-        bind-interfaces = true;
+        # domain-needed = true;
+        # bogus-priv = true;
+        # bind-interfaces = true;
         interface = [
-          homeVlan
-          serverVlan
-          cameraVlan
-        ];
-        listen-address = [
-          "192.168.10.1"
-          "192.168.20.1"
-          "192.168.30.1"
+          homeVlan.name
+          serverVlan.name
+          cameraVlan.name
         ];
         server = [
           "1.1.1.1"
@@ -199,76 +185,28 @@ in
           "8.8.8.8"
         ];
         dhcp-range = [
-          "set:home,192.168.10.100,192.168.10.200,12h"
-          "set:servers,192.168.20.50,192.168.20.150,24h"
-          "set:cameras,192.168.30.50,192.168.30.150,24h"
+          "set:${homeVlan.name},192.168.${homeVlan.id}.100,192.168.${homeVlan.id}.200,12h"
+          "set:${serverVlan.name},192.168.${serverVlan.id}.50,192.168.${serverVlan.id}.150,24h"
+          "set:${cameraVlan.name},192.168.${cameraVlan.id}.50,192.168.${cameraVlan.id}.150,24h"
         ];
         dhcp-option = [
-          "tag:home,option:router,192.168.10.1"
-          "tag:home,option:dns-server,192.168.10.1"
-          "tag:home,option:ntp-server,192.168.10.1"
-          "tag:servers,option:router,192.168.20.1"
-          "tag:servers,option:dns-server,192.168.20.1"
-          "tag:servers,option:ntp-server,192.168.20.1"
-          "tag:cameras,option:router,192.168.30.1"
-          "tag:cameras,option:dns-server,192.168.30.1"
-          "tag:cameras,option:ntp-server,192.168.30.1"
+          "tag:${homeVlan.name},option:router,192.168.${homeVlan.id}.1"
+          "tag:${homeVlan.name},option:dns-server,192.168.${homeVlan.id}.1"
+          "tag:${homeVlan.name},option:ntp-server,192.168.${homeVlan.id}.1"
+          "tag:${serverVlan.name},option:router,192.168.${serverVlan.id}.1"
+          "tag:${serverVlan.name},option:dns-server,192.168.${serverVlan.id}.1"
+          "tag:${serverVlan.name},option:ntp-server,192.168.${serverVlan.id}.1"
+          "tag:${cameraVlan.name},option:router,192.168.${cameraVlan.id}.1"
+          "tag:${cameraVlan.name},option:dns-server,192.168.${cameraVlan.id}.1"
+          "tag:${cameraVlan.name},option:ntp-server,192.168.${cameraVlan.id}.1"
         ];
+        bind-interfaces = true;
+        dhcp-authoritative = true;
+        log-dhcp = true;
       };
     };
 
-    suricata = {
-      enable = true;
-      interfaces = [
-        wanInterface
-        homeVlan
-        serverVlan
-      ];
-      settings = {
-        af-packet = [
-          {
-            interface = wanInterface;
-            threads = 2;
-            cluster-type = "cluster_flow";
-          }
-          {
-            interface = homeVlan;
-            threads = 1;
-            cluster-type = "cluster_flow";
-          }
-          {
-            interface = serverVlan;
-            threads = 1;
-            cluster-type = "cluster_flow";
-          }
-        ];
-        detect-thread-ratio = 1.2;
-        vars = {
-          HOME_NET = "[192.168.10.0/24,192.168.20.0/24,192.168.30.0/24]";
-          EXTERNAL_NET = "!$HOME_NET";
-        };
-        default-log-dir = "/var/log/suricata";
-      };
-    };
-
-    netdata = {
-      enable = true;
-      config.global = {
-        "memory mode" = "dbengine";
-        "default port" = 19999;
-      };
-    };
-
-    lldpd.enable = true;
-    prometheus.exporters.node.extraFlags = [ "--collector.conntrack" ];
-    prometheus.exporters.node.openFirewall = true;
-    fail2ban.enable = true;
   };
 
   virtualisation.docker.enable = lib.mkForce false;
-
-  security.sudo = {
-    enable = true;
-    wheelNeedsPassword = false;
-  };
 }
