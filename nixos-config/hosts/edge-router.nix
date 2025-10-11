@@ -52,6 +52,10 @@ in
     lldpd
     iproute2
     wireguard-tools
+    iperf3
+    pciutils
+    usbutils
+    nettools
   ];
 
   powerManagement.cpuFreqGovernor = "performance";
@@ -177,6 +181,7 @@ in
           serverVlan.name
           cameraVlan.name
         ];
+        # why these upstream servers?. Does camera VLAN need them?
         server = [
           "1.1.1.1"
           "1.0.0.1"
